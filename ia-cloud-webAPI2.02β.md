@@ -674,10 +674,10 @@ var iaCloudInventoryData = {
 
 #### 各プロパティの意味と制限 ####
 
-| Property   | 値      | 説明       | Notes  |
-|------------|-------|-----------|--------|
-| contentType|string             | "InventoryData"       | 固定   |
-| contentData|Array              | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない） |        |
+| Property    | 値      | 説明            | Notes  |
+|-------------|---------|-----------------|--------|
+| contentType | string  | "InventoryData" | 固定   |
+| contentData | Array   | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない） | |
 
 #### contentData object ####
 | Property名  | 値          | 説明        | Notes|
