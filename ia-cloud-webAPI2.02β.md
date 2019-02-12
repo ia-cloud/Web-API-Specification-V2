@@ -22,14 +22,14 @@ MSTC Japan
 
 ia-cloudのデータ収集サービスAPIの概要を下図に示す。ia-cloud APIは、IAシステムがファイアーウォール（F/W）の内側から、Webサービスを利用し、Saas型のクラウドサービスであるデータ収集サービスへ接続するためのAPIで、
 
-* REST-fullなHttpsを利用したプロトコールと、WebsocketによるJSONメッセージ交換仕様
+* REST-fullなHttpsを利用したプロトコールと、WebSocketによるJSONメッセージ交換仕様
 * JSON表現の収集データオブジェクトモデル仕様
 
 を規定する。
 
 ![ia-cloudの技術的基盤](media/image3.png)  
 
-HttpsのPOSTメソッドあるいはWebsocketのメッセージを利用し、JSONで記述されたサービスコマンドとデータオブジェクトを送出する。クラウドサービスからの応答は、Httpsの場合はResponse Bodyに格納されたJSONで、Websocketの場合はWebsocketメッセージのレスポンスとして返される。
+HTTPSのPOSTメソッドあるいはWebSocketのメッセージを利用し、JSONで記述されたサービスコマンドとデータオブジェクトを送出する。クラウドサービスからの応答は、Httpsの場合はResponse Bodyに格納されたJSONで、WebSocketの場合はWebSocketメッセージのレスポンスとして返される。
 
 ## ia-cloudフィールドデータサーバ（FDS）
 
@@ -113,7 +113,7 @@ FDSは、プロキシサーバ経由のアクセスに対応できること。
 
 ## Webscket
 
-ia-cloudのWebsocketによるサービスは、全てFDS側からのHttpsリクエストによる、Wesocketへのアップグレード要求から開始される。
+ia-cloudのWebSocketによるサービスは、全てFDS側からのHttpsリクエストによる、Wesocketへのアップグレード要求から開始される。
 
 プロトコール規約はRFC6455に準ずるものとする。(http://tools.ietf.org/html/rfc6455)  
 アップグレードに際しての認証と暗号化に関する方針は以下に示す。
@@ -176,7 +176,7 @@ Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
 ia-cloud Web APIにおけるサービスのリクエストは、
 
 REST API：httpsのPOSTリクエストボディ  
-Websocket API：wssのペイロード
+WebSocket API：wssのペイロード
 
 に格納したJSON文字列で記述されたオブジェクトで記述される。JSONリクエストボディによるサービスリクエストの種類は
 
@@ -1529,7 +1529,7 @@ var iaCloudObjectContent = {
 
 ## 通信電文搬送モデル
 
-ia-cloud Websocket APIを利用して、他の通信プロトコールの電文を搬送するためのデータモデル。
+ia-cloud WebSocket APIを利用して、他の通信プロトコールの電文を搬送するためのデータモデル。
 
 PLC各社の独自のシリアル通信プロトコール・TCP通信プロトコールや、Modbus/TCP、OPC-UAなどの搬送を想定している。
 
