@@ -111,7 +111,7 @@ FDSは、プロキシサーバ経由のアクセスに対応できること。
 | 842       | object format error | JSONフォーマットエラー |
 | 850       | CCS Error           | CCS側での何らかのエラー |
 
-## Webscket
+## WebSocket
 
 ia-cloudのWebSocketによるサービスは、全てFDS側からのHttpsリクエストによる、Wesocketへのアップグレード要求から開始される。
 
