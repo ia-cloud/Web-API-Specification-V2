@@ -22,9 +22,8 @@ MSTC Japan
 
 ia-cloudのデータ収集サービスAPIの概要を下図に示す。ia-cloud APIは、IAシステムがファイアーウォール（F/W）の内側から、Webサービスを利用し、Saas型のクラウドサービスであるデータ収集サービスへ接続するためのAPIで、
 
-・REST-fullなHttpsを利用したプロトコールと、WebsocketによるJSONメッセージ交換仕様
-
-・JSON表現の収集データオブジェクトモデル仕様
+* REST-fullなHttpsを利用したプロトコールと、WebsocketによるJSONメッセージ交換仕様
+* JSON表現の収集データオブジェクトモデル仕様
 
 を規定する。
 
