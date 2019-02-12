@@ -28,7 +28,7 @@ ia-cloudのデータ収集サービスAPIの概要を下図に示す。ia-cloud 
 
 を規定する。
 
-![](media/image3.png)  
+![ia-cloudの技術的基盤](media/image3.png)  
 
 HttpsのPOSTメソッドあるいはWebsocketのメッセージを利用し、JSONで記述されたサービスコマンドとデータオブジェクトを送出する。クラウドサービスからの応答は、Httpsの場合はResponse Bodyに格納されたJSONで、Websocketの場合はWebsocketメッセージのレスポンスとして返される。
 
