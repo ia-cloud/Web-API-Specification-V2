@@ -50,7 +50,7 @@ ia-cloud Web APIにしたがい、フィールドデータサーバ（FDS）か�
 
 フィールドデータサーバ（FDS）とクラウドセンタサーバ（CCS）との間で使用される通信プロトコールは、HttpsとWssを使用する。
 
-## Https（REST）
+## HTTPS（REST）
 
 ia-cloudのRESTサービスは、全てFDS側からのサービスリクエストから開始される。
 
