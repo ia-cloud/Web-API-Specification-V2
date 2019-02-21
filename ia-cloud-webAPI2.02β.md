@@ -940,9 +940,9 @@ var iaCloudAlarm&Event = {
 // ia-cloud/JSON Machine Status Model
 // ******************************************************
 
-var iaCloudMachineStaus = {
+var iaCloudMachineStatus = {
 
-    "contentType" : " MachineStaus",
+    "contentType" : " MachineStatus",
     "contentData" : [
     {
       "dataName" : { string } ,
