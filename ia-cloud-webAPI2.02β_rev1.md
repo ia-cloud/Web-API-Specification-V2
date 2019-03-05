@@ -201,7 +201,7 @@ Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
 
 ia-cloud Web API におけるサービスのリクエストは、
 
-REST API ： HTTPS の POST リクエストボディ
+REST API ： HTTPS の POST リクエストボディ <br>
 Websocket API ： WSS のペイロード
 
 に格納した JSON 文字列で記述されたオブジェクトで記述される。
