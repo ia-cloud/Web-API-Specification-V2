@@ -234,7 +234,7 @@ FDS は、各種のサービスの利用に先立って、CCS との接続を確
 
 **Request json**
 
-```json
+```
 {
     // User 情報、FDS 情報
     "request"       : "connect",
