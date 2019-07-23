@@ -303,10 +303,12 @@ CCS は、受け取ったオブジェクトを、objectKey と timestamp をキ�
 
 ```
 {
-    "serviceID"    : { string },          // サービス ID
-    "status"       : { string },
-    "newServiceID" : { string },
+	“serviceID” : { string } ,
+	“status” : { string },
+	“newServiceID” : { string },
+	“optionalMessage” : {object}
 }
+
 ```
 
 | プロパティ      | 値     | 説 明                                                                                                                       | Notes  |
@@ -396,10 +398,10 @@ CCS は、新たな serviceID を発行することが期待されているが�
 
 ```
 {
-    "FDSKey"          : { string },
-    "serviceID"       : { string },
-    "newServiceID"    : { string },
-    "optionalMessage" : { object }
+  	“serviceID” : { string } ,
+  	“status” : { string },
+  	“newServiceID” : { string },
+  	“optionalMessage” : {object}
 }
 ```
 
