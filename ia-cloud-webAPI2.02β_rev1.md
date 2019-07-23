@@ -303,10 +303,9 @@ CCS は、受け取ったオブジェクトを、objectKey と timestamp をキ�
 
 ```
 {
-    "FDSKey"          : { string },
-    "serviceID"       : { string },
-    "newServiceID"    : { string },
-    "optionalMessage" : { object }
+    "serviceID"    : { string },          // サービス ID
+    "status"       : { string },
+    "newServiceID" : { string },
 }
 ```
 
