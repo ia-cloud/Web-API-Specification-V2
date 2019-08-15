@@ -886,20 +886,19 @@ var iaCloudErrorStatus = {
 // ******************************************************
 
 var iaCloudAlarm&Event = {
-    "contentType" : " Alarm&Event",
+    "contentType" : "Alarm&Event",
     "contentData" : [
       {
-        "commonName" : " A&E Status",
-        "dataValue" : { string}
+        "commonName" : "Alarm&Event",
+        "dataValue" : {
+          "AnEStatus": { string },
+          "AnECode": { string },
+          "AnEDescription": { string }
+        }
       },
-      {
-        "commonName" : "A&E Code" ,
-        "dataValue" : { string }  
-      },
-      {
-        "commonName" : "A&E Description" ,
-        "dataValue" : { string }  
-      }
+              ・
+              ・
+              ・
     ]
 }
 
@@ -919,18 +918,15 @@ var iaCloudAlarm&Event = {
 | Property名  | 値          | 説明        | Notes|
 |--------|--------|--------|--------|
 |commonName  |string      | "A&EStatus" エラー状態表すデータ名称  |  固定 |
-|dataValue   | string      | "set" :当該A&Eが発生<br>"reset"当該A&Eが復帰<br>"on" :当該A&Eが発生中<br>"off" :当該A&Eは発生していない<br>のいずれか  |　|
+|dataValue   | object      | Alarm&Event状態を表すオブジェクト。<br>次のdataValueObjectを参照 |　|
+
+* dataValueObject
 
 | Property名  | 値          | 説明        | Notes|
 |--------|--------|--------|--------|
-|commonName  |string      | "Error Code" エラーコードを表すデータ名称  | 固定|
-|dataValue   | string      | エラーコードを表す文字列          |　 |
-
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-|commonName  |string      | "Error Description" エラー内容表すデータ名 称 | 固定 |
-|dataValue   | strings     | エラーの内容を表す文字列          |　 |
-
+|AnEStatus  |string      | "set" :当該A&Eが発生<br>"reset"当該A&Eが復帰<br>"on" :当該A&Eが発生中<br>"off" :当該A&Eは発生していない<br>のいずれか   | |
+|AnECode   | string      | エラーコードを表す文字列          |　 |
+|AnEDescription  | string      | エラーメッセージを表す文字列          |　 |
 
 
 ## 設備運転状態モデル
