@@ -1,8 +1,10 @@
 ****
+
 <img src="media/image1.png" width="220" height="200">
 
-# **ia-cloud Specification**
-# **Web API Version 2.03β**
+# ia-cloud Specification
+
+# Web API Version 2.03β
 
 ****
 
@@ -119,7 +121,7 @@ ia-cloud の WebSocket によるサービスは、全て FDS 側からの HTTPS 
 アップグレードに際しての認証と暗号化に関する方針は以下に示す。
 
 * アップグレードを要求する HTTPS リクエスト自体 Basic 認証を必要とする
-* アップグレードするプロトコールは TLS を使用し、転送データを暗号化する（WSS を使用する）。
+* アップグレードするプロトコールは TLS を使用し、転送データを暗号化する（WSS を使用する）
 
 アップグレード後は、サービス内容に応じた JSON 文字列を WSS のペイロードとして送受信する。
 WebSocket の設定として、次の制限を設けることを推奨する。
@@ -214,15 +216,14 @@ Request json
 }
 ```
 
-
-| Property      |値      | 説明                                                                                                                       | Notes              |
-| ------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| request       | string | "connect"                                                                                                                  | 固定               |
-| Authorization | string | サービスプロバイダーから支給された CCS へアクセスするための userID とパスワードを HTTP の Basic 認証に倣って設定する。<br> "Basic SUFfY2xvdWRVc2VySUQ6UGFzc2NvZGU=" <br>（userID = "ia-cloudUserID", Password = "Passcode", base64 encoding）                                           | HTTPS の場合省略可 |
-| FDSKey        | string | この FDS のユニークな Key                                                                                                  |                    |
-| FDSType       | string | "iaCloudFDS"                                                                                                               | 固定               |
-| timestamp     | string | サービスへ接続する時点でのタイムスタンプ。ISO8601 に規定される[拡張表記]文字列。<br> 例： 2014-08-15T13:43:28.123456+9:00  |                    |
-| comment       | string | FDS と接続に関する任意の説明。取り扱いは、CCS 側に依存する。                                                               | 省略可             |
+| Property      |値      | 説明                                                                                                                         | Notes              |
+| ------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| request       | string | "connect"                                                                                                                    | 固定               |
+| Authorization | string | サービスプロバイダーから支給された CCS へアクセスするための userID とパスワードを HTTP の Basic 認証に倣って設定する。<br>"Basic SUFfY2xvdWRVc2VySUQ6UGFzc2NvZGU="<br>（userID = "ia-cloudUserID" , Password = "Passcode" , base64 encoding）                                            | HTTPS の場合省略可 |
+| FDSKey        | string | この FDS のユニークな Key                                                                                                    |                    |
+| FDSType       | string | "iaCloudFDS"                                                                                                                 | 固定               |
+| timestamp     | string | サービスへ接続する時点でのタイムスタンプ<br>ISO8601 に規定される[拡張表記]文字列<br>　例： 2014-08-15T13:43:28.123456+9:00   |                    |
+| comment       | string | FDS と接続に関する任意の説明。取り扱いは、CCS 側に依存する。                                                                 | 省略可             |
 
 Response json
 ```
@@ -232,15 +233,14 @@ Response json
     "FDSType" : "iaCloudFDS",
     "serviceID" : { string }
 }
-
 ```
 
 | Property  | 値     | 説明                                                                                                                                | Notes |
 | --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| userID    | string | サービスプロバイダーから支給されたサービスを受ける userID。<br> 接続 Request のコピー。                                             |       |
-| FDSKey    | string | この FDS のユニークな Key。 接続 Request のコピー。                                                                                 |       |
+| userID    | string | サービスプロバイダーから支給されたサービスを受ける userID。<br>connect Request のコピー。                                           |       |
+| FDSKey    | string | この FDS のユニークな Key。 connect Request のコピー。                                                                              |       |
 | FDSType   | string | "iaCloudFDS"                                                                                                                        | 固定  |
-| serviceID | string | FDS が CCS にデータを格納するため等に使用する serviceID。<br> userID 、FDSKey 、timestamp などから生成された Hash 値等を使用する。  |       |
+| serviceID | string | FDS が CCS にデータを格納するため等に使用する serviceID。<br>userID 、FDSKey 、timestamp などから生成された Hash 値等を使用する。   |       |
 
 ## データオブジェクトインスタンスの格納
 
@@ -269,7 +269,7 @@ Response json
 ```
 {
     "FDSKey" : { string },
-    "ServiceID" : { string },
+    "serviceID" : { string },
     "newServiceID" : { string },
     "optionalMessage" : { object }
 }
@@ -279,8 +279,8 @@ Response json
 | --------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- | ------ |
 | serviceID       | string | store Request で使用された serviceID。 store Request のコピー。                                                            |        |
 | status          | string | store Request の実行結果  { "ok" / "ng" }                                                                                  |        |
-| newServiceID    | string | 次回の store Request で使用されるべき serviceID。<br> 変更の必要がなければ、同一の serviceID が返される。                  |        |
-| optionalMessage | object | FDS へ送付する任意の JSON オブジェクトメッセージ。<br> FDS は解釈できない optionnalMessage を読み飛ばさなければならない。  | 省略可 |
+| newServiceID    | string | 次回の store Request で使用されるべき serviceID。<br>変更の必要がなければ、同一の serviceID が返される。                   |        |
+| optionalMessage | object | FDS へ送付する任意の JSON オブジェクトメッセージ。<br>FDS は解釈できない optionnalMessage を読み飛ばさなければならない。   | 省略可 |
 
 ## データオブジェクトインスタンスの取得
 
@@ -303,13 +303,13 @@ Request json
 
 ```
 
-| Property    | 値     | 説明                                                       | Notes |
-| ----------- | ------ | ---------------------------------------------------------- | ----- |
-| request     | string | "retrieve"                                                 | 固定  |
-| serviceID   | string | 接続時あるいは直前の Response Body で返された serviceID。  |       |
-| objectKey   | string | 取得する ia-cloud オブジェクトの Key。                     |       |
-| timestamp   | string | 取得する ia-cloud オブジェクトインスタンスのタイムスタンプ。 ISO8601 に規定される文字列。<br> 例：2014-08-15T13:43:28.123456+9:00 <br> timestamp と instanceKey のいずれも "" の場合、CCS は保持する最新の <br> インスタンスを返す。 指定された timestamp のオブジェクトが存在しない <br> 場合は、その timestamp 以前の最も新しいオブジェクトを返す。    |        |
-| instanceKey | string | 取得する ia-cloud オブジェクトインスタンスのユニーク ID。<br> objectKey + timestamp and/or instanceKey をもって、個々のインスタンスの <br> ユニークキーとなる。 timestamp と instanceKey いずれも "" の場合、CCS は <br> 保持する最新のインスタンスを返す。  | 省略可 |
+| Property    | 値     | 説明                                                                  | Notes |
+| ----------- | ------ | --------------------------------------------------------------------- | ----- |
+| request     | string | "retrieve"                                                            | 固定  |
+| serviceID   | string | 接続時あるいは直前の Response Body で返された serviceID               |       |
+| objectKey   | string | 取得する ia-cloud オブジェクトの Key。                                |       |
+| timestamp   | string | 取得する ia-cloud オブジェクトインスタンスのタイムスタンプ<br>ISO8601 に規定される文字列<br>例：2014-08-15T13:43:28.123456+9:00<br>timestamp と instanceKey のいずれも "" の場合、CCS は保持する最新の<br>インスタンスを返す。 指定された timestamp のオブジェクトが存在しない<br>場合は、その timestamp 以前の最も新しいオブジェクトを返す。    |        |
+| instanceKey | string | 取得する ia-cloud オブジェクトインスタンスのユニーク ID。<br>objectKey + timestamp and/or instanceKey をもって、個々のインスタンス<br>のユニークキーとなる。 timestamp と instanceKey のいずれも "" の場合、<br>CCS は保持する最新のインスタンスを返す。  | 省略可 |
 
 Response json
 ```
@@ -325,8 +325,8 @@ Response json
 | ------------ | ------ | ------------------------------------------------------------------------------------------------------- | ----- |
 | serviceID    | string | retrieve Request で使用された serviceID。 retrieve Requestのコピー。                                    |       |
 | status       | string | retrieve Request の実行結果 { "ok" / "ng" }                                                             |       |
-| newServiceID | string | 次回の格納 Request で使用されるべき serviceID。<br> 変更の必要がなければ、同一の serviceID が返される。 |       |
-| dataObject   | object | 取得された ia-cloud オブジェクト。                                                                      |       |
+| newServiceID | string | 次回の格納 Request で使用されるべき serviceID<br>変更の必要がなければ、同一の serviceID が返される      |       |
+| dataObject   | object | 取得された ia-cloud オブジェクト                                                                        |       |
 
 ## 状態の確認（serviceID の更新）
 
@@ -343,12 +343,12 @@ Request json
 }
 ```
 
-| Property  | 値     | 説明                                                                                                              | Notes  |
-| --------- | ------ | ----------------------------------------------------------------------------------------------------------------- | ------ |
-| request   | string | "getStatus"                                                                                                       | 固定   |
-| serviceID | string | 接続時あるいは直前の Response Body で返された serviceID。                                                         |        |
-| timestamp | string | サービスへ接続する時点でのタイムスタンプ。 ISO8601 に規定される文字列。 <br> 例：2014-08-15T13:43:28.123456+9:00  |        |
-| comment   | string | FDS と接続に関する任意の説明 <br> 取り扱いは、CCS 側に依存する。                                                  | 省略可 |
+| Property  | 値     | 説明                                                                                                            | Notes  |
+| --------- | ------ | --------------------------------------------------------------------------------------------------------------- | ------ |
+| request   | string | "getStatus"                                                                                                     | 固定   |
+| serviceID | string | 接続時あるいは直前の Response Body で返された serviceID                                                         |        |
+| timestamp | string | サービスへ接続する時点でのタイムスタンプ。 ISO8601 に規定される文字列。<br>例：2014-08-15T13:43:28.123456+9:00  |        |
+| comment   | string | FDS と接続に関する任意の説明<br>取り扱いは、CCS 側に依存する                                                    | 省略可 |
 
 Response json
 ```
@@ -360,12 +360,12 @@ Response json
 }
 ```
 
-| Property        | 値     | 説明                                                                                                                       | Notes  |
-| --------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- | ------ |
-| FDSKey          | string | この FDS のユニークな Key。<br> 接続 Request のコピー。                                                                    |        |
-| serviceID       | string | getStatus Request で使用された serviceID。 getStatus Requestのコピー。                                                     |        |
-| newServiceID    | string | 次回の格納 Request で使用されるべき serviceID。<br> 変更の必要がなければ、同一の serviceID が返される。                    |        |
-| optionalMessage | object | FDS へ送付する任意の JSON オブジェクトメッセージ。<br> FDS は解釈できない optionnalMessage を読み飛ばさなければならない。  | 省略可 |
+| Property        | 値     | 説明                                                                                                                 | Notes  |
+| --------------- | ------ | -------------------------------------------------------------------------------------------------------------------- | ------ |
+| FDSKey          | string | この FDS のユニークな Key<br>connect Request のコピー                                                                |        |
+| serviceID       | string | getStatus Request で使用された serviceID。 getStatus Requestのコピー。                                               |        |
+| newServiceID    | string | 次回の格納 Request で使用されるべき serviceID<br>変更の必要がなければ、同一の serviceID が返される                   |        |
+| optionalMessage | object | FDS へ送付する任意の JSON オブジェクトメッセージ<br>FDS は解釈できない optionalMessage を読み飛ばさなければならない  | 省略可 |
 
 ## 接続の終了
 
@@ -395,12 +395,12 @@ Response json
 }
 ```
 
-| Property  | 値     | 説明                                                                                     | Notes |
-| --------- | ------ | ---------------------------------------------------------------------------------------- | ----- |
-| userID    | string | サービスプロバイダーから支給されたサービスを受ける userID。<br> 接続 Request のコピー。  |       |
-| FDSKey    | string | この FDS のユニークな Key。接続 Request のコピー。                                       |       |
-| serviceID | string | terminate Request で使用された serviceID。 terminate Request のコピー。                  |       |
-| message   | string | "disconnected"                                                                           | 固定  |
+| Property  | 値     | 説明                                                                                   | Notes |
+| --------- | ------ | -------------------------------------------------------------------------------------- | ----- |
+| userID    | string | サービスプロバイダーから支給されたサービスを受ける userID<br>connect Request のコピー  |       |
+| FDSKey    | string | この FDS のユニークな Key。connect Request のコピー。                                  |       |
+| serviceID | string | terminate Request で使用された serviceID。 terminate Request のコピー。                |       |
+| message   | string | "disconnected"                                                                         | 固定  |
 
 ## 他の通信プロトコールの搬送 convey
 
@@ -411,17 +411,17 @@ dataObject には、**通信電文搬送モデル** に示すオブジェクト�
 Request json
 ```
 {
-    "request" : "convey"
+    "request" : "convey",
     "serviceID" : { string },
     "dataObject" : { object }    //  ia-cloud オブジェクトで詳細記述
 }
 ```
 
-| Property   | 値     | 説明                                                                                                                            | Notes |
-| ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| request    | string | "convey"                                                                                                                        | 固定  |
-| serviceID  | string | 接続時あるいは直前の Response Body で返された serviceID。                                                                       |       |
-| detaObject | object | convey サービスによって搬送されるデータのオブジェクト。<br> **通信電文搬送モデル**の dataContent を格納した iaCloudObject。   |       |
+| Property   | 値     | 説明                                                                                                                       | Notes |
+| ---------- | ------ | -------------------------------------------------------------------------------------------------------------------------- | ----- |
+| request    | string | "convey"                                                                                                                   | 固定  |
+| serviceID  | string | 接続時あるいは直前の Response Body で返された serviceID                                                                    |       |
+| detaObject | object | convey サービスによって搬送されるデータのオブジェクト<br>**通信電文搬送モデル** の dataContent を格納した iaCloudObject  |       |
 
 Response json
 ```
@@ -433,12 +433,12 @@ Response json
 }
 ```
 
-| Property     | 値     | 説明                                                                                                                            | Notes |
-| ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| serviceID    | string | convey Request で使用された serviceID。 convey Request のコピー。                                                               |       |
-| status       | string | convey Request の実行結果 { "ok" / "ng" }                                                                                       |       |
-| newServiceID | string | 次回の格納 Request で使用されるべき serviceID。<br> 変更の必要がなければ、同一の serviceID が返される。                         |       |
-| dataObject   | object | convey サービスによって搬送されるデータのオブジェクト。<br> **通信電文搬送モデル**の dataContent を格納した iaCloudObject。   |       |
+| Property     | 値     | 説明                                                                                                                       | Notes |
+| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------- | ----- |
+| serviceID    | string | convey Request で使用された serviceID。 convey Request のコピー。                                                          |       |
+| status       | string | convey Request の実行結果 { "ok" / "ng" }                                                                                  |       |
+| newServiceID | string | 次回の格納 Request で使用されるべき serviceID<br>変更の必要がなければ、同一の serviceID が返される                         |       |
+| dataObject   | object | convey サービスによって搬送されるデータのオブジェクト<br>**通信電文搬送モデル** の dataContent を格納した iaCloudObject  |       |
 
 # ia-cloud オブジェクト
 
@@ -472,14 +472,14 @@ var iaCloudObject = {
 
 ### 各プロパティの意味と制限
 
-| Property          | 値     | 説明                                   | Notes                          |
-| ----------------- | ------ | -------------------------------------- | ------------------------------ |
-| objectType        | string | 基本モデルは、"iaCloudObject"          | 固定                           |
-| objectKey         | string | このオブジェクトの Key。<br> userID 内の名前空間でユニークでなければならない。サービスプロバイダーとユーザとの取り決めに依存する。<br> uri 表記を使用することを推奨する。<br> 例： <br>　com.mydomain.ia-cloud.site.equipment.objectName <br>　com.mydomain.ia-cloud.sitename.fdsname.objectname <br> 省略された場合は、親オブジェクトの "objectKey" を引き継ぐ。                                         | ルートオブジェクト以外は省略可 |
-| objectDescription | string | データオブジェクトの説明・名称など。   | 省略可                         |
-| timestamp         | string | このオブジェクトインスタンスのタイムスタンプ。ISO8601に規定される文字列。<br>例： 2014-08-15T13:43:28.123456+09:00　　秒以下については省略可。<br> 省略された場合は、親オブジェクトの "timestamp" を引き継ぐ。           | ルートオブジェクト以外は省略可 |
-| instanceKey       | string | このオブジェクトインスタンスのユニーク ID。<br>製造工番やシリアル番号などを想定している。タイムスタンプとの併用も可（objectKey + timestamp）and/or instanceKey をもって、個々のインスタンスのユニークキーとなる。        | 省略可                         |
-| objectContent     | object | 任意の iaCloudObjectContent。<br> **ia-cloud データモデル参照** |    |
+| Property          | 値     | 説明                                                                | Notes                          |
+| ----------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
+| objectType        | string | 基本モデルは、"iaCloudObject"                                       | 固定                           |
+| objectKey         | string | このオブジェクトの Key<br>userID 内の名前空間でユニークでなければならない<br>サービスプロバイダーとユーザとの取り決めに依存する<br>uri 表記を使用することを推奨する<br>例：<br>　com.mydomain.ia-cloud.site.equipment.objectName<br>　com.mydomain.ia-cloud.sitename.fdsname.objectname<br>省略された場合は、親オブジェクトの "objectKey" を引き継ぐ                                                                                         | ルートオブジェクト以外は省略可 |
+| objectDescription | string | データオブジェクトの説明・名称など                                  | 省略可                         |
+| timestamp         | string | このオブジェクトインスタンスのタイムスタンプ<br>ISO8601 に規定される文字列<br>　例： 2014-08-15T13:43:28.123456+09:00　秒以下については省略可<br>省略された場合は、親オブジェクトの "timestamp" を引き継ぐ                                              | ルートオブジェクト以外は省略可 |
+| instanceKey       | string | このオブジェクトインスタンスのユニーク ID<br>製造工番やシリアル番号などを想定している<br>タイムスタンプとの併用も可（objectKey + timestamp）and/or instanceKey をもって、個々のインスタンスのユニークキーとなる。                                     | 省略可                         |
+| objectContent     | object | 任意の iaCloudObjectContent<br>**ia-cloud データモデル参照**     |                                |
 
 ## オブジェクトアレイモデル
 
@@ -519,8 +519,8 @@ objectArray 配列には、iaCloudObjectArray を格納してはならない。
 | Property    | 値                     | 説明                           | Notes |
 | ----------- | ---------------------- | ------------------------------ | ----- |
 | objectType  | string                 | "iaCloudObjectArray"           | 固定  |
-| length      | number                 | ログデータの配列の大きさ。     |       |
-| objectArray | Array of iaCloudObject | ia-cloud オブジェクトの配列。  |       |
+| length      | number                 | ログデータの配列の大きさ       |       |
+| objectArray | Array of iaCloudObject | ia-cloud オブジェクトの配列    |       |
 
 **他のプロパティは、基本モデルと同じ。**
 
@@ -534,8 +534,8 @@ ia-cloud Web API 仕様で規定しているオブジェクトモデル構造や
 
 |    | プロパティ        | 簡易名称           | 説明                                                                               |
 |:--:| ----------------- | ------------------ | ---------------------------------------------------------------------------------- |
-| 1  | objectType        | 基本モデルは省略可 | "iaCloudObject" は省略可<br> "iaCloudObjectArry" の簡易表現は、"array"             |
-| 2  | objectKey         | key                | 簡易表現が可能<br> userID 内の名前空間でユニークであれば、uri 表記である必要はない |
+| 1  | objectType        | 基本モデルは省略可 | "iaCloudObject" は省略可<br>"iaCloudObjectArry" の簡易表現は、"array"              |
+| 2  | objectKey         | key                | 簡易表現が可能<br>userID 内の名前空間でユニークであれば、uri 表記である必要はない  |
 | 3  | objectDescription | 省略可             | もともと省略可                                                                     |
 | 4  | timestamp         | ts                 | timestamp の値の形式も、アプリケーション依存で決定してもよい                       |
 | 5  | instanceKey       | iKey               | 簡易表現が可能<br>もともと省略可のケースは省略可能                                 |
@@ -558,12 +558,12 @@ var iaCloudObjectContent = {
 
     "contentType" = "iaCloudData" ,
     "contentData" = [
-      {
-        "dataName" : { string },
-        "commonName" : { string },
-        "unit" : { string },
-        "dataValue" : { primitivedata | nestedobject }
-      },
+        {
+            "commonName" : { string },
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { primitivedata | nestedobject }
+        },
 
       /*        .
       one or more any contentData
@@ -579,17 +579,17 @@ ia-cloud で最も基本となるデータモデルである。他のモデル�
 
 | Property    | 値           | 説明                                                                            | Notes |
 | ----------- | ------------ | ------------------------------------------------------------------------------- | ----- |
-| contentType | string       | "iaCloudData" <br> "contentData" 配列に格納されるオブジェクトにより、<br> この "contentType" が異なる。<br>基本モデルは、"com.ia-cloud.contenttype.iaCloudData" を省略し、"iaCloudData" とする。<br>任意に独自拡張した "contentType" は、フルの uri 表記とする。  | 固定  |
-| contentData | object array | 以下に示す一つ以上のJSONオブジェクト配列                                        |       |
+| contentType | string       | "iaCloudData"<br>"contentData" 配列に格納されるオブジェクトにより、<br>この "contentType" が異なる。<br>基本モデルは、"com.ia-cloud.contenttype.iaCloudData" を省略し、"iaCloudData" とする。<br>任意に独自拡張した "contentType" は、フルの uri 表記とする。  | 固定  |
+| contentData | object array | 以下に示す一つ以上の JSON オブジェクト配列                                      |       |
 
 #### contentData object
 
 | Property   | 値                                   | 説明                                                                                     | Notes             |
 | ---------- | ------------------------------------ | ---------------------------------------------------------------------------------------- | ----------------- |
-| commonName | string                               | contentData の共通の名前<br> contentType 毎に定められている場合は、省略不可              | 省略可            |
-| dataName   | string                               | contentData の任意の名前（各 Locale に基づいた名前）<br> commmonName がある場合は省略可  | 省略可            |
-| Unit       | string                               | dataValue が表す数値の単位<br> ISO1000 、ISO/IEC80000 に準拠した MKS 単位系を使用することを原則とする。<br> dataValue が時刻を表す場合は "time" を、また、無単位の場合は Null 文字列 "" とすること。                                                                       | "" の場合は省略可 |
-| dataValue  | JSON primitive or nested JSON object | contentData の値<br> Null 以外の任意の primitive データ、あるいは任意の object<br>時刻を表す場合は、ISO8601 に規定される文字列<br>例：2014-08-15T13:43:28.123456+09:00                                                                                                       |                   |
+| commonName | string                               | contentData の共通の名前<br>contentType 毎に定められている場合は、省略不可               | 省略可            |
+| dataName   | string                               | contentData の任意の名前（各 Locale に基づいた名前）<br>commmonName がある場合は省略可   | 省略可            |
+| Unit       | string                               | dataValue が表す数値の単位<br>ISO1000 、ISO/IEC80000 に準拠した MKS 単位系を使用することを原則とする。<br>dataValue が時刻を表す場合は "time" を、また、無単位の場合は Null 文字列 "" とすること。                                                                           | "" の場合は省略可 |
+| dataValue  | JSON primitive or nested JSON object | contentData の値<br>Null 以外の任意の primitive データ、あるいは任意の object<br>時刻を表す場合は、ISO8601 に規定される文字列<br>　例：2014-08-15T13:43:28.123456+09:00                                                                                                       |                   |
 
 ## データモデルの簡易表現
 
@@ -619,12 +619,12 @@ var iaCloudProductionResult = {
 
     "contentType" : "ProductionResult",
     "contentData" : [
-    {
-      "commonName" : { string },
-      "dataName" : { string },
-      "unit" : { string } ,
-      "dataValue" : { number }
-    },
+        {
+            "commonName" : { string },
+            "dataName" : { string },
+            "unit" : { string } ,
+            "dataValue" : { number }
+        },
     /*        .
         one or more any contentData objects
               .
@@ -642,16 +642,16 @@ ISO22400 part2（KPIs for manufacturing operations management）5.5 Logistical e
 | Property    | 値     | 説明                                                                                 | Notes |
 | ----------- | ------ | ------------------------------------------------------------------------------------ | ----- |
 | contentType | string | "ProductionResult"                                                                   | 固定  |
-| contentData | Array  | 以下に示す要素を持つ、一つ以上の JSON オブジェクト配列<br>（すべてを含む必要はない） |       |
+| contentData | Array  | 以下に示す要素を持つ、一つ以上の JSON オブジェクト配列（すべてを含む必要はない）     |       |
 
 #### contentData object
 
-| Property   | 値     | 説明                                                                                                                     | Notes  |
-| ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------ | ------ |
-| commonName | string | contentData の名前<br>"OrderID"：製造指図の ID<br>及び、以下の ISO22400-2 の 5.5 Logistical elements で規定される<br>各 elements の定義に準じる。<br><br>  "PlannedOrder Quantity" <br> "Scrap Quantity" <br> "Planned Scrap Quantity" <br> "Good Quantity" <br> "Rework Quantity" <br> "Produced Quantity" <br> "Raw Materials" <br> "Raw Materials Inventory" <br> "Finished  Goods Inventory" <br> "Consumable Inventory" <br> "Consumed Material" <br> "Integrated Good Quantity" <br> "Production Loss" <br> "Storage and Transportation Loss" <br> "Other Loss" <br> "Equipment Production Capacity" <br><br>のいずれか、一つ以上の組合せを標準とするが、拡張を許す。 |        |
-| dataName   | string | contentData の任意の名前。（各 Locale に基づいた名前）                                                                   | 省略可 |
-| unit       | string | "" か、dataValue の適切な単位                                                                                            | 固定   |
-| dataValue  | number | 上記各 contentData の数量を表す数値                                                                                      |        |
+| Property   | 値     | 説明                                                                                               | Notes  |
+| ---------- | ------ | -------------------------------------------------------------------------------------------------- | ------ |
+| commonName | string | contentData の名前<br><br>"OrderID"：製造指図の ID<br>及び、以下の ISO22400-2 の 5.5 Logistical elements で規定される<br>各 elements の定義に準じる。<br><br>"PlannedOrder Quantity"<br>"Scrap Quantity"<br>"Planned Scrap Quantity"<br>"Good Quantity"<br>"Rework Quantity"<br>"Produced Quantity"<br>"Raw Materials"<br>"Raw Materials Inventory"<br>"Finished  Goods Inventory"<br>"Consumable Inventory"<br>"Consumed Material"<br>"Integrated Good Quantity"<br>"Production Loss"<br>"Storage and Transportation Loss"<br>"Other Loss"<br>"Equipment Production Capacity"<br><br>のいずれか、一つ以上の組合せを標準とするが、拡張を許す。   |        |
+| dataName   | string | contentData の任意の名前（各 Locale に基づいた名前）                                               | 省略可 |
+| unit       | string | "" か、dataValue の適切な単位                                                                      | 固定   |
+| dataValue  | number | 上記の各 contentData の数量を表す数値                                                              |        |
 
 ## 在庫実績データモデル
 
@@ -662,26 +662,26 @@ ISO22400 part2（KPIs for manufacturing operations management）5.5 Logistical e
 
 var iaCloudInventoryData = {
 
-    "contentType" : " InventoryData ",
+    "contentType" : "InventoryData",
     "contentData" : [
-      {
-        "commonName"" : "Operation Type",
-        "dataName" : { string },
-        "unit" : "",
-        "dataValue" : { string }
-      },
-      {
-        "commonName" : "Operation Quantity",
-        "dataName" : { string },
-        "unit" : "",
-        "dataValue" : { number }
-      },
-      {
-        "commonName" : "Location Code",
-        "dataName" : { string },
-        "unit" : "",
-        "dataValue" : { string }
-      },
+        {
+            "commonName" : "Operation Type",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Operation Quantity",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { number }
+        },
+        {
+            "commonName" : "Location Code",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { string }
+        },
     ]
 }
 ```
@@ -690,10 +690,10 @@ var iaCloudInventoryData = {
 
 ### 各プロパティの意味と制限
 
-| Property    | 値     | 説明                                                                 | Notes |
-| ----------- | ------ | -------------------------------------------------------------------- | ----- |
-| contentType | string | "InventoryData"                                                      | 固定  |
-| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列（すべてを含む必要はない） |       |
+| Property    | 値     | 説明                                                                   | Notes |
+| ----------- | ------ | ---------------------------------------------------------------------- | ----- |
+| contentType | string | "InventoryData"                                                        | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列（すべてを含む必要はない）   |       |
 
 #### contentData object
 
@@ -721,12 +721,12 @@ var iaCloudQualityData = {
 
     "contentType" : "QualityData",
     "contentData" : [
-    {
-      "commonName" : { string },
-      "dataName" : { string },
-      "unit" : { string },
-      "dataValue" : { number }
-    },
+        {
+            "commonName" : { string },
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
     /*      .
         one or more any contentData objects
             .
@@ -735,7 +735,7 @@ var iaCloudQualityData = {
 }
 ```
 
-監視対象の設備装置・生産ラインなどの、品質実績状態を保持するオブジェクトモデルである。
+監視対象の設備装置・生産ラインなどの品質実績状態を保持するオブジェクトモデルである。
 
 ISO22400 part2（KPIs for manufacturing operations management）5.6 5.7 Quality elements で規定される各 elements の定義に準拠する。
 
@@ -748,12 +748,12 @@ ISO22400 part2（KPIs for manufacturing operations management）5.6 5.7 Quality 
 
 #### contentData object
 
-| Property   | 値   | 説明    | Notes       |
-|--------|--------|--------|--------|
-| commonName  | string      | Quality Elementの名前<br>ISO22400-2の 5.6 5.7 Quality elementsの定義に準じる<br>"Good Part"<br>"Inspected Part"<br>"Upper Specification Limit"<br>"Lower Specification Limit"<br>"Arithmetic Average"<br>"Average of Average Values"<br>"Estimated Deviation"<br>"Standard Deviation"<br>"Variance"<br><br>のいずれかを標準とするが、拡張を許す。 |        |
-| dataName    | string      | 任意の名前（各Localeに基づいた名前） | 省略可 |
-| unit        | string      | "" か、Quality Elementの適切な単位string  | 省略可 |
-| dataValue   | number      | 数量を表す数値 | 　   |
+| Property   | 値     | 説明                                    | Notes  |
+| ---------- | ------ | --------------------------------------- | ------ |
+| commonName | string | Quality Element の名前<br>ISO22400-2 の 5.6 5.7 Quality elementsの定義に準じる。<br><br>"Good Part"<br>"Inspected Part"<br>"Upper Specification Limit"<br>"Lower Specification Limit"<br>"Arithmetic Average"<br>"Average of Average Values"<br>"Estimated Deviation"<br>"Standard Deviation"<br>"Variance"<br><br>のいずれかを標準とするが、拡張を許す。                                            |        |
+| dataName   | string | 任意の名前（各 Locale に基づいた名前）  | 省略可 |
+| unit       | string | "" か Quality Element の適切な単位      | 省略可 |
+| dataValue  | number | 数量を表す数値                          |        |
 
 ## 装置ステータスモデル
 
@@ -764,186 +764,182 @@ ISO22400 part2（KPIs for manufacturing operations management）5.6 5.7 Quality 
 
 var iaCloudEquipmntStatus = {
 
-    "contentType" : " EquipmntStatus ",
+    "contentType" : "EquipmntStatus",
     "contentData" : [
-    {
-      "commonName" : "Status",
-      "dataName" : { "string" } ,
-      "dataValue" : { string }
-    },
-    {
-      "commonName" : "Production Order",
-      "dataName" : { "string" } ,
-      "dataValue" : { string }
-    },
-    {
-      "commonName" : "Started Time",
-      "dataName" : { "string" } ,
-      "unit" : "time" ,
-      "dataValue" : { string }
-    },
-    {
-      "commonName" : "Power Consumption",
-      "dataName" : { "string" } ,
-      "unit" : { string }  ,
-      "dataValue" : { string }
-    }
+        {
+            "commonName" : "Status",
+            "dataName" : { string },
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Production Order",
+            "dataName" : { string },
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Started Time",
+            "dataName" : { string },
+            "unit" : "time",
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Power Consumption",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { string }
+        }
     ]
 }
-
 ```
 
-監視対象の設備装置などの、稼働状態を保持するオブジェクトモデルである。
+監視対象の設備装置などの稼働状態を保持するオブジェクトモデルである。
 
-ISO22400 part2 (KPIs for manufacturing operations management) 5.2 Time model for work unitsで規定されるTime elementsの定義に準拠する。
+ISO22400 part2（KPIs for manufacturing operations management）5.2 Time model for work units で規定される Time elements の定義に準拠する。
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
+| Property    | 値     | 説明                                                                   | Notes |
+| ----------- | ------ | ---------------------------------------------------------------------- | ----- |
+| contentType | string | "EquipmntStatus"                                                       | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列（すべてを含む必要はない）   |       |
 
-| Property    | 値          | 説明        | Notes       |
-|--------|--------|--------|
-| contentType | string      | "EquipmntStatus"         |  固定 |
-| contentData | Array       | 以下に示す一つ以上のJSONオブジェクト配列<br>（すべてを含む必要はない） |　 |
+#### contentData object
 
-#### contentData object ####
-| Property名  | 値 | 説明        | Notes|
-|--------|--------|--------|--------|
-| commonName  | string      | "Status"  装置状態を表す名称 | 固定 |
-| dataName    | string      | 任意の名前<br>（各Localeに基づいた名前）  | 省略可 |
-| dataValue   | string      | ISO22400-2の 5.2Time model for work unitの定義に準じる<br>"Unit Busy"<br>"Unit Processing"<br>"Production"<br>"Unit Setup"<br>"Unit Delay"<br><br>のいずれかを標準とするが、拡張を許す。 | 　|
+| Property   | 値     | 説明                                     | Notes  |
+| ---------- | ------ | ---------------------------------------- | ------ |
+| commonName | string | "Status"　装置状態を表す名称             | 固定   |
+| dataName   | string | 任意の名前（各 Locale に基づいた名前）   | 省略可 |
+| dataValue  | string | ISO22400-2 の 5.2 Time model for work unit の定義に準じる<br><br>"Unit Busy"<br>"Unit Processing"<br>"Production"<br>"Unit Setup"<br>"Unit Delay"<br><br>のいずれかを標準とするが、拡張を許す。                               |        |
 
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-| commonName  | string      | "Production Order" 作業指示を表す名称 | 固定 |
-| dataName    | string      | 任意の名前（各Localeに基づいた名前）  | 省略可 |
-| dataValue   | string      | 作業指示コード |　|
+| Property   | 値     | 説明                                     | Notes  |
+| ---------- | ------ | ---------------------------------------- | ------ |
+| commonName | string | "Production Order"　作業指示を表す名称   | 固定   |
+| dataName   | string | 任意の名前（各Localeに基づいた名前）     | 省略可 |
+| dataValue  | string | 作業指示コード                           |        |
 
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-| commonName  | string      | "Started Time" 作業開始時間を表す名称 | 固定 |
-| dataName    | string      | 任意の名前（各Localeに基づいた名前）  | 省略可 |
-| unit        | string      | "time"    | 固定        |
-| dataValue   | strings     | 作業開始時刻を示す文字列          |　|
+| Property   | 値     | 説明                                     | Notes  |
+| ---------- | ------ | ---------------------------------------- | ------ |
+| commonName | string | "Started Time"　作業開始時間を表す名称   | 固定   |
+| dataName   | string | 任意の名前（各 Locale に基づいた名前）   | 省略可 |
+| unit       | string | "time"                                   | 固定   |
+| dataValue  | string | 作業開始時刻を示す文字列                 |        |
 
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-| commonName  | string      | "Power Consumption"  消費電力を表す名称 | 固定 |
-| dataName    | string      | 任意の名前（各Localeに基づいた名前）  |  省略可 |
-| unit        | string      | "W", "KW"等、電力量の単位      |             |
-| dataValue   | number      | 消費電力を示す数値 | 　|
-
-
+| Property   | 値     | 説明                                     | Notes  |
+| ---------- | ------ | ---------------------------------------- | ------ |
+| commonName | string | "Power Consumption"　消費電力を表す名称  | 固定   |
+| dataName   | string | 任意の名前（各 Locale に基づいた名前）   | 省略可 |
+| unit       | string | "W", "KW"等、電力量の単位                |        |
+| dataValue  | number | 消費電力を示す数値                       |        |
 
 ## エラーステイタスモデル （エラー番号を格納）
 
 ```
 // ******************************************************
-// ia-cloud/JSON Equipment Error Status Model
+// ia-cloud/JSON Error Status Model
 // ******************************************************
 
 var iaCloudErrorStatus = {
-    "contentType" : " ErrorStatus ",
+
+    "contentType" : "ErrorStatus",
     "contentData" : [
-    {
-      "commonName" : " Error Status",
-      "dataName" : { "string" } ,
-      "dataValue" : { boolean}
-    },
-    {
-      "commonName" : "Error Code" ,
-      "dataName" : { "string" } ,
-      "dataValue" : { string }
-    },
-    {
-      "commonName" : "Error Description" ,
-      "dataName" : { "string" } ,
-      "dataValue" : { string }
-    }
+        {
+            "commonName" : "Error Status",
+            "dataName" : { string },
+            "dataValue" : { boolean }
+        },
+        {
+            "commonName" : "Error Code",
+            "dataName" : { string },
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Error Description",
+            "dataName" : { string },
+            "dataValue" : { string }
+        }
     ]
 }
-
 ```
 
-監視対象の設備装置などの、状態を保持するオブジェクトモデルである。
+監視対象の設備装置などの状態を保持するオブジェクトモデルである。
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
+| Property    | 値          | 説明                                                                  | Notes |
+| ----------- | ----------- | --------------------------------------------------------------------- | ----- |
+| contentType | string      | "ErrorStatus"                                                         | 固定  |
+| contentData | JSON object | 以下に示す一つ以上の JSON オブジェクト配列（すべてを含む必要はない）  |       |
 
-| Property    | 値          | 説明        | Notes       |
-|--------|--------|--------|--------|
-| contentType | string      | ErrorStatus | 固定        |
-| contentData | JSON object | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない） |　 |
+#### contentData object
 
-#### contentData object ####
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-| commonName  | string | "Error Status" エラー状態表すデータ名称 | 固定 |
-| dataName    | string      | 任意の名前（各Localeに基づ いた名前）  |省略可 |
-| dataValue   | boolean     | true false　のいずれか | 　 |
+| Property   | 値      | 説明                                           | Notes  |
+| ---------- | ------- | ---------------------------------------------- | ------ |
+| commonName | string  | "Error Status"　エラー状態表すデータ名称       | 固定   |
+| dataName   | string  | 任意の名前（各 Locale に基づ いた名前）        | 省略可 |
+| dataValue  | boolean | true / false のいずれか                        |        |
 
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-| commonName  | string      | "Error Code" エラーコードを表すデータ名称  |固定  |
-| dataName    | string      | 任意の名前 （各Localeに基づ いた名前）  | 省略可 |
-| dataValue   | string      | エラーコードを表す文字列   | 　 |
+| Property   | 値      | 説明                                           | Notes  |
+| ---------- | ------- | ---------------------------------------------- | ------ |
+| commonName | string  | "Error Code"　エラーコードを表すデータ名称     | 固定   |
+| dataName   | string  | 任意の名前（各 Locale に基づ いた名前）        | 省略可 |
+| dataValue  | string  | エラーコードを表す文字列                       |        |
 
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-| commonName  | string      | "Error Description" エラー内容表すデータ名称 | 固定 |
-| dataName    | string      | 任意の名前（各Localeに基づいた名前）  | 省略可      |
-| dataValue   | strings     | エラーの内容を表す文字列  | 　 |
-
+| Property   | 値      | 説明                                           | Notes  |
+| ---------- | ------- | ---------------------------------------------- | ------ |
+| commonName | string  | "Error Description"　エラー内容表すデータ名称  | 固定   |
+| dataName   | string  | 任意の名前（各 Locale に基づいた名前）         | 省略可 |
+| dataValue  | string  | エラーの内容を表す文字列                       |        |
 
 ## アラーム＆イベントモデル
 
 ```
 // ******************************************************
-// ia-cloud/JSON Equipment Error Status Model
+// ia-cloud/JSON Alarm & Event Status Model
 // ******************************************************
 
 var iaCloudAlarm&Event = {
+
     "contentType" : "Alarm&Event",
     "contentData" : [
-      {
-        "commonName" : "Alarm&Event",
-        "dataValue" : {
-          "AnEStatus": { string },
-          "AnECode": { string },
-          "AnEDescription": { string }
-        }
-      },
-              ・
-              ・
-              ・
+        {
+            "commonName" : "Alarm&Event",
+            "dataValue" : {
+                "AnEStatus" : { string },
+                "AnECode" : { string },
+                "AnEDescription" : { string }
+            }
+        },
+    /*        .
+        one or more any Machine status objects
+              .
+              .            */
     ]
 }
-
 ```
 
-監視対象の設備装置などの、警報やイベント状態を保持するオブジェクトモデルである。
+監視対象の設備装置などの警報やイベント状態を保持するオブジェクトモデルである。
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
+| Property    | 値                | 説明                                                                      | Notes |
+| ----------- | ----------------- | ------------------------------------------------------------------------- | ----- |
+| contentType | string            | "ErrorStatus"                                                             | 固定  |
+| contentData | JSON object Array | 以下に示す一つ以上の JSON オブジェクト配列<br>（すべてを含む必要はない）  |       |
 
-| Property    | 値    | 説明  | Notes   |
-|--------|--------|--------|--------|
-| contentType | string      |"ErrorStatus" | 固定        |             |
-| contentData | JSON object Array  | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない） |
+#### contentData object
 
-#### contentData object ####
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-|commonName  |string      | "A&EStatus" エラー状態表すデータ名称  |  固定 |
-|dataValue   | object      | Alarm&Event状態を表すオブジェクト。<br>次のdataValueObjectを参照 |　|
+| Property   | 値     | 説明                                                                 | Notes |
+| ---------- | ------ | -------------------------------------------------------------------- | ----- |
+| commonName | string | "A&EStatus"　エラー状態表すデータ名称                                | 固定  |
+| dataValue  | object | Alarm & Event 状態を表すオブジェクト<br>次の dataValueObject を参照  |       |
 
 * dataValueObject
 
-| Property名  | 値          | 説明        | Notes|
-|--------|--------|--------|--------|
-|AnEStatus  |string      | "set" :当該A&Eが発生<br>"reset"当該A&Eが復帰<br>"on" :当該A&Eが発生中<br>"off" :当該A&Eは発生していない<br>のいずれか   | |
-|AnECode   | string      | エラーコードを表す文字列          |　 |
-|AnEDescription  | string      | エラーメッセージを表す文字列          |　 |
-
+| Property       | 値     | 説明                                                                                                                                     | Notes  |
+| -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| AnEStatus      | string | "set" : 当該 A&E が発生<br>"reset" : 当該 A&E が復帰<br>"on" : 当該 A&E が発生中<br>"off" : 当該 A&E は発生していない<br><br>のいずれか  |        |
+| AnECode        | string | エラーコードを表す文字列                                                                                                                 |        |
+| AnEDescription | string | エラーメッセージを表す文字列                                                                                                             |        |
 
 ## 設備運転状態モデル
 
@@ -954,36 +950,35 @@ var iaCloudAlarm&Event = {
 
 var iaCloudMachineStatus = {
 
-    "contentType" : " MachineStatus",
+    "contentType" : "MachineStatus",
     "contentData" : [
-    {
-      "dataName" : { string } ,
-      "dataValue" : { string }
-    },
+        {
+            "dataName" : { string },
+            "dataValue" : { string }
+        },
     /*        .
         one or more any Machine status objects
               .
               .            */
     ]
 }
-
 ```
 
-監視対象の設備装置などの、警報やイベント状態を保持するオブジェクトモデルである。
+監視対象の設備装置などの警報やイベント状態を保持するオブジェクトモデルである。
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
-| Property    | 値          | 説明        | Notes       |
-|--------|--------|--------|--------|
-| contentType | string      | "ErrorStatus" | 固定        |
-| contentData | JSON object Array | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない）        |　|
+| Property    | 値                | 説明                                                                      | Notes |
+| ----------- | ----------------- | ------------------------------------------------------------------------- | ----- |
+| contentType | string            | "MachineStatus"                                                           | 固定  |
+| contentData | JSON object Array | 以下に示す一つ以上の JSON オブジェクト配列<br>（すべてを含む必要はない）  |       |
 
-#### contentData object ####
-| Property名  | 値      | 説明  | Notes|
-|--------|--------|--------|--------|
-| dataName    | string      | 設備の任意の名前（各Localeに基づ いた名前）  |   |
-| dataValue   | string      | "start" :設備が運転開始した<br>"stop" :設備が停止した<br>"on" :設備は運転中<br>"off" :設備は停止中<br><br>のいずれかの文字列 | 　 |
+#### contentData object
 
+| Property  | 値     | 説明                                                                                                                                | Notes |
+| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| dataName  | string | 設備の任意の名前（各 Locale に基づいた名前）                                                                                        |       |
+| dataValue | string | "start" : 設備が運転を開始した<br>"stop" : 設備が停止した<br>"on" : 設備は運転中<br>"off" : 設備は停止中<br><br>のいずれかの文字列  |       |
 
 ## コントロールポイントモデル
 
@@ -997,82 +992,90 @@ var iaCloudControlPointData = {
     "contentType" : "ControlPointData",
     "contentData" : [
         {
-          "commonName" : "Process Value"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { number }  },
+            "commonName" : "Process Value",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-          "commonName" : "Set Value"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { number }  } ,
+            "commonName" : "Set Value",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-          "commonName" : "Manipulated Value"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { number }  } ,
+            "commonName" : "Manipulated Value",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-          "commonName" : "Low Limit"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { number }  } ,
+            "commonName" : "Low Limit",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-          "commonName" : "High Limit"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { number }  } ,
+            "commonName" : "High Limit",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-          "commonName" : "Low-low Limit"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { number }  } ,
+            "commonName" : "Low-low Limit",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-          "commonName" : "High-high Limit"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { number }  } ,
+            "commonName" : "High-high Limit",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-          "commonName" : "Low Limit Event"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { boolean }  } ,
+            "commonName" : "Low Limit Event",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { boolean }
+        },
         {
-          "commonName" : "High Limit Event"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { boolean }  } ,
+            "commonName" : "High Limit Event",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { boolean }
+        },
         {
-          "commonName" : "Low-low Limit Event"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { boolean }  } ,
+            "commonName" : "Low-low Limit Event",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { boolean }
+        },
         {
-          "commonName" : "High-high Limit Event"
-          "dataName" : { "string" } ,
-          "unit" : { string }  ,
-          "dataValue" : { boolean }
+            "commonName" : "High-high Limit Event",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { boolean }
         }
     ]
 }
 ```
 
+### 各プロパティの意味と制限
 
+| Property    | 値     | 説明                                                                   | Notes |
+| ----------- | ------ | ---------------------------------------------------------------------- | ----- |
+| contentType | string | "ControlPoint"                                                         | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列 （すべてを含む必要はない）  |       |
 
-#### 各プロパティの意味と制限 ####
+#### contentData object
 
-| Property    | 値          | 説明        | Notes       |
-|--------|--------|--------|--------|
-| contentType | string      | "ControlPoint" | 固定        |
-| contentData | Array       | 以下に示す一つ以上のJSONオブジェクト配列 （すべてを含む必要はない） | 　|
-
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-| commonName  | string | 以下のいずれか。<br><br> "ProcessValue" :number , <br>"Set Value" :number ,<br>"Low  Limit" :number ,<br>"High Limit" :number ,<br>"Low Low Limit" :number ,<br>"High High Limit" : number ,<br>"Low Limit Event" :boolean ,<br>"High Limit Event" :boolean,<br>"Low Low Limit Event" :boolean , <br>"High High Limit Event" :boolean  |             |
-|dataName    | string      | 任意の名前 （各Localeに基づいた名前） | 省略可  |
-|unit        | string      | システム変数の単位 | ""は、省略可 |
-|dataValue   | number or boolean|システム変数の値。変数の型はcommonNameの項を参照  |　|
-
+| Property   | 値                | 説明                                                  | Notes       |
+| ---------- | ----------------- | ----------------------------------------------------- | ----------- |
+| commonName | string            | 以下のいずれか。<br><br>"ProcessValue" : number,<br>"Set Value" : number,<br>"Low Limit" : number,<br>"High Limit" : number ,<br>"Low Low Limit" : number,<br>"High High Limit" : number,<br>"Low Limit Event" : boolean,<br>"High Limit Event" : boolean,<br>"Low Low Limit Event" : boolean, <br>"High High Limit Event" : boolean<br><br>  |            |
+| dataName   | string            | 任意の名前（各 Locale に基づいた名前）                | 省略可      |
+| unit       | string            | システム変数の単位                                    | "" は省略可 |
+| dataValue  | number or boolean | システム変数の値<br>変数の型は commonName の項を参照  |             |
 
 ## 温度調節計モデル
 
@@ -1082,82 +1085,90 @@ var iaCloudControlPointData = {
 // ******************************************************
 // ia-cloud/JSON Temperature Controllers Data Model
 // ******************************************************
+
 var iaCloudTempContData = {
 
     "contentType" : "TempContData",
-    "contentData" : [ {
-        "commonName" : "Process Value"
-        "dataName" : { "string" } ,
-        "unit" : { string }
-        "dataValue" : { number }  },
-      {
-        "commonName" : "Setting Value"
-        "dataName" : { "string" } ,
-        "unit" : { string }
-        "dataValue" : { number }  },
-      {
-        "commonName" : "Run Mode"
-        "dataName" : { "string" } ,
-        "unit" : "" ,
-        "dataValue" : { boolean }  },
-      {
-        "commonName" : "Auto Mode"
-        "dataName" : { "string" } ,
-        "unit" : "" ,
-        "dataValue" : { boolean }  },
-      {
-        "commonName" : "Auto Tuning"
-        "dataName" : { "string" } ,
-        "unit" : "" ,
-        "dataValue" : { boolean }  },
-      {
-        "commonName" : "Proportional Band"
-        "dataName" : { "string" } ,
-        "unit" : { string }  },
-        "dataValue" : { number }
-      {
-        "commonName" : "Integral Time"
-        "dataName" : { "string" } ,
-        "unit" : { string }  },
-        "dataValue" : { number }
-      {
-        "commonName" : "Derivative Time"
-        "dataName" : { "string" } ,
-        "unit" : { string }  },
-        "dataValue" : { number }
-      {
-        "commonName" : "Error Date"
-        "dataName" : { "string" } ,
-        "unit" : "" ,
-        "dataValue" : { string }  },
-      {
-        "commonName" : "Error Message"
-        "dataName" : { "string" } ,
-        "unit" : "" ,
-        "dataValue" : { string }
-      }
+    "contentData" : [
+        {
+            "commonName" : "Process Value",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
+        {
+            "commonName" : "Setting Value",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
+        {
+            "commonName" : "Run Mode",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
+        {
+            "commonName" : "Auto Mode",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
+        {
+            "commonName" : "Auto Tuning",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
+        {
+            "commonName" : "Proportional Band",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
+        {
+            "commonName" : "Integral Time",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
+        {
+            "commonName" : "Derivative Time",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
+        {
+            "commonName" : "Error Date",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { string },
+        },
+        {
+            "commonName" : "Error Message",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { string }
+        }
     ]
 }
-
 ```
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
+| Property    | 値     | 説明                                                                  | Notes |
+| ----------- | ------ | --------------------------------------------------------------------- | ----- |
+| contentType | string | "TempContData"                                                        | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列（すべてを含む必要はない）  |       |
 
-| Property    | 値          | 説明        | Notes       |
-|--------|--------|--------|--------|
-| contentType | string      | "TempContData" | 固定        |
-| contentData | Array       | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない） | 　|
+#### contentData object
 
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-| commonName  | string      | 標準的な温度調節器の仕様を基に規定したシステム変数名<br><br>"Process Value"：計測値<br>"Setting Value"：設定値<br>"Run Mode"：運転モード<br>"Auto Mode"：自動モード<br>"Auto Tuning"：オートチューニングモード <br>"Proportional Band"：比例帯<br>"IntegralTime"：積分時間<br>"Derivative Time"：微分時間<br>"Error Date"：エラー発生時刻<br>"Error Message"：エラーメッセージ |          |
-|dataName    | string      | 任意の名前（各Localeに基づいた名前）  | 省略可  |
-|unit        | string      | システム変数の単位 | ""は省略可 |
-|dataValue   | string, number<br>or boolean | システム変数の値。 | 　|
-
-
+| Property   | 値                            | 説明                                  | Notes       |
+| ---------- | ----------------------------- | ------------------------------------- | ----------- |
+| commonName | string                        | 標準的な温度調節器の仕様を基に規定したシステム変数名<br><br>"Process Value" : 計測値<br>"Setting Value" : 設定値<br>"Run Mode" : 運転モード<br>"Auto Mode" : 自動モード<br>"Auto Tuning" : オートチューニングモード<br>"Proportional Band" : 比例帯<br>"Integral Time" : 積分時間<br>"Derivative Time" : 微分時間<br>"Error Date" : エラー発生時刻<br>"Error Message" : エラーメッセージ<br><br>      |             |
+| dataName   | string                        | 任意の名前（各Localeに基づいた名前）  | 省略可      |
+| unit       | string                        | システム変数の単位                    | "" は省略可 |
+| dataValue  | string , number<br>or boolean | システム変数の値                      |             |
 
 ## アクチュエーターモデル
 
@@ -1167,108 +1178,123 @@ var iaCloudTempContData = {
 // ******************************************************
 // ia-cloud/JSON Actuator Data Model
 // ******************************************************
+
 var iaCloudActuatorObject = {
-// metaData
+
     "contentType" : "ActuatorData",
-    "contentData" : [ {
-        "commonName" : "Servo On",
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { boolean } }
+    "contentData" : [
         {
-        "commonName" : "Busy Status",
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { boolean } }
+            "commonName" : "Servo On",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
         {
-        "commonName" : "Auto Mode",
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { boolean } }
+            "commonName" : "Busy Status",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
         {
-        "commonName" : "Normal Status",
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { boolean } }
+            "commonName" : "Auto Mode",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        }
         {
-        "commonName" : "Zero Return",
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { boolean } }
+            "commonName" : "Normal Status",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
         {
-        "commonName" : "Emergency Stop",
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { boolean } }
+            "commonName" : "Zero Return",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
         {
-        "commonName" : "Current Position",
-        "dataName" : { "string" } ,
-        "unit" : { string }
-        "dataValue" : { number } }
+            "commonName" : "Emergency Stop",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
         {
-        "commonName" : "Current Speed",
-        "dataName" : { "string" } ,
-        "unit" : { string },
-        "dataValue" : { number } }
+            "commonName" : "Current Position",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "Error Code",
-        "dataName" : { "string" } ,
-        "unit" : { string } ,
-        "dataValue" : { number } }
+            "commonName" : "Current Speed",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "Position Objects",
-        "dataName" : { "string" } ,
-        "dataValue" : [ {
-            "commonName" : "Target Position",
-            "dataName" : { "string" } ,
-            "unit" : { string } ,
-            "dataValue" : { number } }
-            {
-            "commonName" : "Speed" ,
-            "dataName" : { "string" } ,
-            "unit" : { string } ,
-            "dataValue" : { number } }
-            {
-            "commonName" : "Acceleration" ,
-            "dataName" : { "string" } ,
-            "unit" : { string } ,
-            "dataValue" : { number } }
-            {
-            "commonName" : "Deceleration" ,
-            "dataName" : { "string" } ,
-            "unit" : { string } ,
-            "dataValue" : { number } }
-        ] ,
-     } ]
+            "commonName" : "Error Code",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        }
+        {
+            "commonName" : "Position Objects",
+            "dataName" : { string },
+            "dataValue" : [
+                {
+                    "commonName" : "Target Position",
+                    "dataName" : { string },
+                    "unit" : { string },
+                    "dataValue" : { number }
+                },
+                {
+                    "commonName" : "Speed",
+                    "dataName" : { string },
+                    "unit" : { string },
+                    "dataValue" : { number }
+                },
+                {
+                    "commonName" : "Acceleration",
+                    "dataName" : { string },
+                    "unit" : { string },
+                    "dataValue" : { number }
+                },
+                {
+                    "commonName" : "Deceleration",
+                    "dataName" : { string },
+                    "unit" : { string },
+                    "dataValue" : { number }
+                }
+            ]
+        }
+    ]
 }
-
-
 ```
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
+| Property    | 値     | 説明                                                                  | Notes |
+| ----------- | ------ | --------------------------------------------------------------------- | ----- |
+| contentType | string | "ActuatorData"                                                        | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列（すべてを含む必要はない）  |       |
 
-| Property    | 値          | 説明        | Notes       |
-|--------|--------|--------|--------|
-| contentType | string      | "ActuatorData" | 固定 |
-| contentData | Array       | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない） |　|
+#### contentData object
 
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-|commonName  | string <br>or object | 標準的なアクチュエーターの仕様を基に規定したシステム変数名<br>"Servo On"：サーボON状態<br>"Busy Status"：移動中<br>"Auto Mode"：運転モード <br>"Normal Status"：運転ステータス<br>"Zero Return"：原点復帰完了<br>"Emergency Stop"：非常停止<br>"Current Position"：現在位置<br>"Current Speed"：現在速度<br>"Error Code"：エラーコード<br>"Position Objects"：ポジションデータ（object配列、下表参照）| |
-|dataName    | string      | 任意の名前（各Localeに基づいた名前）  |  省略可 |
-|unit        | string      | システム変数の単位 | "は省略可    |
-|dataValue   | string, number <br>or boolean| システム変数の値。 |　|
+| Property   | 値                            | 説明                                                        | Notes       |
+| ---------- | ----------------------------- | ----------------------------------------------------------- | ----------- |
+| commonName | string<br>or object           | 標準的なアクチュエーターの仕様を基に規定したシステム変数名<br><br>"Servo On" : サーボ ON 状態<br>"Busy Status" : 移動中<br>"Auto Mode" : 運転モード <br>"Normal Status" : 運転ステータス<br>"Zero Return" : 原点復帰完了<br>"Emergency Stop" : 非常停止<br>"Current Position" : 現在位置<br>"Current Speed" : 現在速度<br>"Error Code" : エラーコード<br>"Position Objects" : ポジションデータ（ object 配列、下表参照）<br><br>  |             |
+|dataName    | string                        | 任意の名前（各 Locale に基づいた名前）                       | 省略可      |
+|unit        | string                        | システム変数の単位                                           | "" は省略可 |
+|dataValue   | string , number<br>or boolean | システム変数の値                                             |             |
 
 #### Position Objects ####
 
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-|commonName  | string      |"Position Objects"：ポジションデータ（配列）<br> "Target Position"：目標位置 <br>"Speed"：速度<br>"Acceleration"：加速度<br>"Deceleration"：減速度 |           |
-|dataName    | string      | 任意の名前（各Localeに基づいた名前）  |  省略可 |
-|unit        | string      | システム変数の単位 | "は省略可    |
-|dataValue   | string, number <br>or boolean | システム変数の値。 |　|
+| Property   | 値                            | 説明                                    | Notes       |
+| ---------- | ----------------------------- | --------------------------------------- | ----------- |
+| commonName | string                        | "Position Objects" : ポジションデータ（配列）<br>"Target Position" : 目標位置<br>"Speed" : 速度<br>"Acceleration" : 加速度<br>"Deceleration" : 減速度                                                            |             |
+| dataName   | string                        | 任意の名前（各 Locale に基づいた名前）  | 省略可      |
+| unit       | string                        | システム変数の単位                      | "" は省略可 |
+| dataValue  | string , number<br>or boolean | システム変数の値                        |             |
 
 ## インバータモデル
 
@@ -1278,74 +1304,82 @@ var iaCloudActuatorObject = {
 // ******************************************************
 // ia-cloud/JSON Inverter Controllers Data Model
 // ******************************************************
+
 var iaCloudInverterData = {
 
     "contentType" : "InverterData",
     "contentData" : [
         {
-        "commonName" : "Output Frequency",
-        "dataName" : { "string" } ,
-        "unit" : { string } ,
-        "dataValue" : { number }  } ,
+            "commonName" : "Output Frequency",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "Frequency Reference" ,
-        "dataName" : { "string" } ,
-        "unit" : { string },
-        "dataValue" : { number } } ,
+            "commonName" : "Frequency Reference",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "Output Current" ,
-        "dataName" : { "string" } ,
-        "unit" : { string },
-        "dataValue" : { number } } ,
+            "commonName" : "Output Current",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "Accumulated Time" ,
-        "dataName" : { "string" } ,
-        "unit" : { string },
-        "dataValue" : { number } } ,
+            "commonName" : "Accumulated Time",
+            "dataName" : { string },
+            "unit" : { string },
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "Forward Rotation" ,
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { boolean } },
+            "commonName" : "Forward Rotation",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
         {
-        "commonName" : "Reverse Rotation" ,
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { boolean } },
+            "commonName" : "Reverse Rotation",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
         {
-        "commonName" : "Error Date" ,
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { string } },
+            "commonName" : "Error Date",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { string }
+        },
         {
-        "commonName" : "Error Message" ,
-        "dataName" : { "string" } ,
-        "unit" : "",
-        "dataValue" : { string } }
+            "commonName" : "Error Message",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { string }
+        }
     ]
 }
-
 ```
-#### 各プロパティの意味と制限 ####
 
+### 各プロパティの意味と制限
 
-| Property    | 値     | 説明  | Notes |
-|--------|--------|--------|--------|
-| contentType | string      | "InverterData" | 固定        |
-| contentData | Array       | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない） |　 |
+| Property    | 値     | 説明                                                                  | Notes |
+| ----------- | ------ | --------------------------------------------------------------------- |------ |
+| contentType | string | "InverterData"                                                        | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列（すべてを含む必要はない）  |       |
 
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-|commonName  | string      | 標準的なアクチュエーターの仕様を基に規定したシステム変数名。<br><br>"OutputFrequency"：出力周波数<br>"Frequency Reference"：周波数指令<br>"Output Current"：出力電流<br>"AccumulatedTime"：累積稼働時間<br>"Forward Rotation"<br>"Reverse Rotation"：逆転中<br>"Error Date"：エラー発生時刻<br>"Error Message"：エラーメッセージ |          |
-| dataName    | string      | 任意の名前  | 省略可（各Localeに基づいた名前）  |
-| unit        | string      | システム変数の単位 | ""は省略可 |
-| dataValue   | string, number <br>or boolean | システム変数の値。 |　 |
+#### contentData object
 
+| Property   | 値                            | 説明                                    | Notes       |
+|----------- | ----------------------------- | --------------------------------------- | ----------- |
+| commonName | string                        | 標準的なアクチュエーターの仕様を基に規定したシステム変数名<br><br>"Output Frequency" : 出力周波数<br>"Frequency Reference" : 周波数指令<br>"Output Current" : 出力電流<br>"AccumulatedTime" : 累積稼働時間<br>"Forward Rotation" : 運転中<br>"Reverse Rotation" : 逆転中<br>"Error Date" : エラー発生時刻<br>"Error Message" : エラーメッセージ<br><br>                                                    |             |
+| dataName   | string                        | 任意の名前（各 Locale に基づいた名前）  | 省略可      |
+| unit       | string                        | システム変数の単位                      | "" は省略可 |
+| dataValue  | string, number <br>or boolean | システム変数の値                        |             |
 
-## ロボットORiNデータモデル
+## ロボット ORiN データモデル
 
-ORiN協議会の発行する仕様書「ORiN2仕様書」に基づく、ia-cloud都の情報連携のためのCAOプロバイダーから供給されるデータオブジェクトのデータモデル。
+ORiN 協議会の発行する仕様書「 ORiN2 仕様書 」に基づく、ia-cloud との情報連携のための CAO プロバイダーから供給されるデータオブジェクトのデータモデル。
 
 ```
 // ******************************************************
@@ -1356,21 +1390,24 @@ var iaCloudORiNProviderObject = {
 
     "contentType" : "ORiNProvider",
     "contentData" : [
-      {
-        "commonName" : "@OPERATING_TIME",
-        "dataName" : { "string" } ,
-        "unit" : "hour",
-        "dataValue" : { number }  },
-      {
-        "commonName" : "@BUSY_STATUS" ,
-        "dataName" : { "string" } ,
-        "unit" : "" ,
-        "dataValue" : { boolean }  } ,
-      {
-        "commonName" : "@WORK_POSITION" ,
-        "dataName" : { "string" } ,
-        "unit" : { strings } ,
-        "dataValue" : { number | Array }  } ,
+        {
+            "commonName" : "@OPERATING_TIME",
+            "dataName" : { string },
+            "unit" : "hour",
+            "dataValue" : { number }
+        },
+        {
+            "commonName" : "@BUSY_STATUS",
+            "dataName" : { string },
+            "unit" : "",
+            "dataValue" : { boolean }
+        },
+        {
+            "commonName" : "@WORK_POSITION",
+            "dataName" : { string },
+            "unit" : { strings },
+            "dataValue" : { number | Array }
+        },
 
       /*      ・
       one or more any ORiN System Veriables.
@@ -1381,21 +1418,21 @@ var iaCloudORiNProviderObject = {
 }
 ```
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
+| Property    | 値     | 説明             | Notes |
+| ----------- | ------ | ---------------- | ----- |
+| contentType | string | "ORiNProvider"   | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列（すべてを含む必要はない）<br>ORiN2 の仕様書に規定される、一つあるいは複数の CAO システム変数からなるもの  |    |
 
-| Property    | 値 | 説明   | Notes  |
-|--------|--------|--------|--------|
-| contentType | string      | "ORiNProvider"   | 固定|
-| contentData | Array       | 以下に示す一つ以上のJSONオブジェクト配列（すべてを含む必要はない）<br>ORiN2の仕様書に規定される、一つあるいは複数の、CAOシステム変数からなるもの。 |　|
+#### contentData object
 
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-|commonName  | string      | ORiN2で規定される、@から始まるCAOシステム変数の名称。<br>各システム変数については、ORiN2仕様書を参照のこと。 |            |
-|dataName    | string      | 任意の名前（各Localeに基づいた名前）  | 省略可 |
-|unit        | string      | CAOシステム変数の単位          |             |
-|dataValue   | JSON primitive or<br>Array of primitives       |  CAOシステム変数の値 <br>ORiN2仕様書で規定される各システム変数の型は、適切にJSONにバインドされていなければならない。 |　|
+| Property  | 値                                       | 説明                                    | Notes  |
+| --------- | ---------------------------------------- | --------------------------------------- | ------ |
+|commonName | string                                   | ORiN2 で規定される、＠から始まる CAO システム変数の名称<br>各システム変数については、ORiN2 仕様書を参照のこと  |     |
+|dataName   | string                                   | 任意の名前（各 Locale に基づいた名前）  | 省略可 |
+|unit       | string                                   | CAO システム変数の単位                  |        |
+|dataValue  | JSON primitive or<br>Array of primitives | CAO システム変数の値<br>ORiN2 仕様書で規定される各システム変数の型は、適切に<br>JSON にバインドされていなければならない  |      |
 
 ## PLC レジスタモデル
 
@@ -1409,43 +1446,45 @@ var iaCloudPLCRegister = {
     "contentType" : "PLCRegister",
     "contentData" : [
         {
-        "commonName" : "StartAdress" ,
-        "dataValue" : { string } }
+            "commonName" : "StartAdress",
+            "dataValue" : { string }
+        },
         {
-        "commonName" : "Length" ,
-        "dataValue" : { number } }
+            "commonName" : "Length",
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "RegisterData" ,
-        "dataValue" : [
-            { string } , { string } , { string }
+            "commonName" : "RegisterData",
+            "dataValue" : [
+                { string } , { string } , { string }
+            ]
         /*          .
             one or more PLCRegisterData string
                     .
                     .
         */
-        ]
+        }
     ]
 }
-
 ```
-#### 各プロパティの意味と制限 ####
 
+### 各プロパティの意味と制限
 
-| Property    | 値   | 説明   | Notes  |
-|--------|--------|--------|--------|
-| contentType | string      | "PLCRegister" | 固定        |
-| contentData | Array       | 以下に示すJSONオブジェクト配列 |　|
+| Property    | 値     | 説明                              | Notes |
+| ----------- | ------ | --------------------------------- | ----- |
+| contentType | string | "PLCRegister"                     | 固定  |
+| contentData | Array  | 以下に示す JSON オブジェクト配列  |       |
 
+#### contentData objec
 
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-| commonName  | string      | "StartAdress" | 固定        |
-| dataValue   | stringの配列 | PLC内部レジスター等のベンダー依存のレジスタアドレス文字列<br>例：M0123, D100,Coil150,HR430など |        |
-| commonName  | string      | Length      | 固定        |
-| dataValue   | number      | レジスターデータ（16Bit）の配列の大きさ |     |
-| commonName  | string      | "RegisterData" | 固定        |
-| dataValue   | stringの配列 | レジスターデータ文字列のlengh長の配列。<br>c言語の16進表記<br>例：["0x4a6f",  "0xd5c2",・・・ ]   |　|
+| Property   | 値            | 説明                                                                                                      | Notes |
+| ---------- | ------------- | --------------------------------------------------------------------------------------------------------- | ----- |
+| commonName | string        | "StartAdress"                                                                                             | 固定  |
+| dataValue  | string の配列 | PLC 内部レジスター等のベンダー依存のレジスタアドレス文字列<br>　例：M0123 , D100 , Coil150 , HR430 など   |       |
+| commonName | string        | Length                                                                                                    | 固定  |
+| dataValue  | number        | レジスターデータ（16Bit）の配列の大きさ                                                                   |       |
+| commonName | string        | "RegisterData"                                                                                            | 固定  |
+| dataValue  | string の配列 | レジスターデータ文字列の lengh 長の配列<br>C 言語の 16 進表記<br>　例 : [ "0x4a6f" , "0xd5c2" , ・・・ ]  |       |
 
 ## ファイルデータモデル
 
@@ -1459,43 +1498,44 @@ var iaCloudFiledata = {
     "contentType" : "Filedata",
     "contentData" : [
         {
-        "commonName" : "File Name" ,
-        "dataValue" : { string }  },
+            "commonName" : "File Name",
+            "dataValue" : { string }
+        },
         {
-        "commonName" : "Encoding" ,
-        "dataValue" : { number }  },
+            "commonName" : "Encoding",
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "Size" ,
-        "dataValue" : { number }  },
+            "commonName" : "Size",
+            "dataValue" : { number }
+        },
         {
-        "commonName" : "Encoded Data" ,
-        "dataValue" : { string }  }
+            "commonName" : "Encoded Data",
+            "dataValue" : { string }
+        }
     ]
 }
-
 ```
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
+| Property    | 値     | 説明                              | Notes |
+| ----------- | ------ | --------------------------------- | ----- |
+| contentType | string | "Filedata"                        | 固定  |
+| contentData | Array  | 以下に示す JSON オブジェクト配列  |       |
 
-| Property    | 値 | 説明    | Notes |
-|--------|--------|--------|--------|
-| contentType | string      | PLCRegister | 固定        |
-| contentData | Array       | 以下に示すJSONオブジェクト配列 |　|
+#### contentData object
 
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-|commonName  | string      | "File Name"      |固定|
-|dataValue   | string      | URL encodeされたFile名（パスは任意） |      |
-|commonName  | string      | "Encoding" | 固定        |
-|dataValue   | string      | ファイルデータのエンコードを表す以下の文字列のいずれか <br>"ascii"、"utf-8"、"base64"  |    |
-|commonName  | string      | "Size"    | 固定        |
-|dataValue   | number      | エンコードされたファイルの大きさ（バイト数） |  |
-|commonName  | string      | "Encoded Data"      |固定|
-|dataValue   | string      | エンコードされたファイルデータ（最大256KB） |　|
-
-
+| Property   | 値     | 説明                                                                                     | Notes |
+| ---------- | ------ | ---------------------------------------------------------------------------------------- | ----- |
+| commonName | string | "File Name"                                                                              | 固定  |
+| dataValue  | string | URL encode された File 名（パスは任意）                                                  |       |
+| commonName | string | "Encoding"                                                                               | 固定  |
+| dataValue  | string | ファイルデータのエンコードを表す以下の文字列のいずれか<br>"ascii" 、"utf-8" 、"base64"   |       |
+| commonName | string | "Size"                                                                                   | 固定  |
+| dataValue  | number | エンコードされたファイルの大きさ（バイト数）                                             |       |
+| commonName | string | "Encoded Data"                                                                           | 固定  |
+| dataValue  | string | エンコードされたファイルデータ（最大 256KB）                                             |       |
 
 ## Blob データ
 
@@ -1508,12 +1548,12 @@ var iaCloudFiledata = {
 
 var iaCloudObjectContent = {
 
-    "contentType" :  "iaCloudBlobData" ,
+    "contentType" :  "iaCloudBlobData",
     "contentData" : [
-      {
-        "dataName" : {string} ,
-        "dataValue" : {string}
-      } ,
+        {
+          "dataName" : { string },
+          "dataValue" : { string }
+        },
 
         /*      .
                    one or more any contentData
@@ -1521,29 +1561,28 @@ var iaCloudObjectContent = {
                 .                          */
      ]
 }
-
 ```
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
-| Property    | 値  | 説明  |   Notes |
-|--------|--------|--------|--------|
-| contentType | string      | "iaCloudBlobData"    |固定|
-| contentData | Array       | 以下に示す一つ以上のJSONオブジェクト配列 | 　|
+| Property    | 値     | 説明                                        | Notes |
+| ----------- | ------ | ------------------------------------------- | ----- |
+| contentType | string | "iaCloudBlobData"                           | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列  |       |
 
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-|commonName  | string      | "Blob Data"      |固定|
-|dataName    | string      | 格納されるデータの任意の名前（各Localeに基づいた名前）  |省略可|
-|dataValue   | string      | Blob Dataの値。<br>base64エンコードされたデータ列（最大256KB） |　 |
+#### contentData object
 
+| Property   | 値     | 説明                                                             | Notes  |
+| ---------- | ------ | ---------------------------------------------------------------- | ------ |
+| commonName | string | "Blob Data"                                                      | 固定   |
+| dataName   | string | 格納されるデータの任意の名前（各 Locale に基づいた名前）         | 省略可 |
+| dataValue  | string | Blob Data の値<br>Base64 エンコードされたデータ列（最大 256KB）  |        |
 
 ## 通信電文搬送モデル
 
-ia-cloud WebSocket APIを利用して、他の通信プロトコールの電文を搬送するためのデータモデル。
+ia-cloud WebSocket API を利用して、他の通信プロトコールの電文を搬送するためのデータモデル。
 
-PLC各社の独自のシリアル通信プロトコール・TCP通信プロトコールや、Modbus/TCP、OPC-UAなどの搬送を想定している。
+PLC 各社の独自のシリアル通信プロトコール・TCP 通信プロトコールや、Modbus / TCP、OPC-UA などの搬送を想定している。
 
 ```
 // ******************************************************
@@ -1552,44 +1591,47 @@ PLC各社の独自のシリアル通信プロトコール・TCP通信プロト�
 
 var iaCloudObjectContent = {
 
-    "contentType" : "iaCloudConveyedMsg" ,
+    "contentType" : "iaCloudConveyedMsg",
     "contentData" : [
         {
-        "commonName" : "Source" ,
-        "dataValue" : { string }  },
+            "commonName" : "Source",
+            "dataValue" : { string }
+        },
         {
-        "commonName" : "Destination" ,
-        "dataValue" : { string }  },
+            "commonName" : "Destination",
+            "dataValue" : { string }
+        },
         {
-        "commonName" : "config" ,
-        "dataValue" : { object }  },
+            "commonName" : "config",
+            "dataValue" : { object }
+        },
         {
-        "commonName" : "Message" ,
-        "dataValue" : { string }  }
-     ]
+            "commonName" : "Message",
+            "dataValue" : { string }
+        }
+    ]
 }
-
 ```
 
-#### 各プロパティの意味と制限 ####
+### 各プロパティの意味と制限
 
+| Property    | 値     | 説明                                         | Notes |
+| ----------- | ------ | -------------------------------------------- | ----- |
+| contentType | string | "iaCloudConveyedMsg"                         | 固定  |
+| contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列   |       |
 
-| Property    | 値    | 説明 | Notes |
-|--------|--------|--------|--------|
-| contentType | string      | "iaCloudConveyedMsg"  |固定|
-| contentData | Array       | 以下に示す一つ以上のJSONオブジェクト配列 |　|
+#### contentData object
 
-#### contentData object ####
-| Property名  | 値   | 説明 | Notes|
-|--------|--------|--------|--------|
-|commonName  | string  |"Source"| 固定 |
-|dataValue   | string  | Message dataの発信元を表す文字列<br>CCS、FDSが解釈可 能な表現で中継可能な対象であること。 | |
-|commonName  | string  | "Distination"        | 固定 |
-|dataValue   | string  | Message dataの配信先を表す文字列<br>CCS、FDSが解釈可能な表現で中継可能な対象であること。 |  |
-|commonName  | string  | "config"| 固定        |
-|dataValue   | object  | Message dataの構成を表すオブジェクト<br>オブジェクとの内部構成は自由に拡張できるが、標準的に以下の構成に準拠すること。<br>{"protocol":"Mitsubishi MC", "Version": "3.4", ????? }   |  |
-|commonName  | string |"Message"  | 固定        |
-|dataValue   | string      | Messageをbase64エンコードした文字列最大 256kB  |　|
+| Property   | 値     | 説明                                                                                       | Notes |
+| ---------- | ------ | ------------------------------------------------------------------------------------------ |------ |
+| commonName | string |"Source"                                                                                    | 固定  |
+| dataValue  | string | Message Data の発信元を表す文字列<br>CCS 、FDSが解釈可能な表現で中継可能な対象であること   |       |
+| commonName | string | "Distination"                                                                              | 固定  |
+| dataValue  | string | Message Data の配信先を表す文字列<br>CCS 、FDSが解釈可能な表現で中継可能な対象であること   |       |
+| commonName | string | "config"                                                                                   | 固定  |
+| dataValue  | object | Message Data の構成を表すオブジェクト<br>オブジェクとの内部構成は自由に拡張できるが、標準的に以下の構成に準拠すること<br>{ "protocol" : "Mitsubishi MC" , "Version" : "3.4" , ????? }                                                                                        |       |
+| commonName | string |"Message"                                                                                   | 固定  |
+| dataValue  | string | Message を Base64 エンコードした文字列（最大 256KB）                                       |       |
 
 ## USER Defined Data Model
 
