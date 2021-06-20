@@ -4,7 +4,7 @@
 
 # ia-cloud Specification
 
-# Web API Version 2.03β
+# Web API Version 2.05β
 
 ***
 
@@ -464,6 +464,7 @@ var iaCloudObject = {
     "objectDescription" : { string },
     "timestamp" : { string },
     "instanceKey" : { string },
+    "quality" : { string },
 
     // objectContent
     "objectContent"  : { iaCloudObjectContent }
@@ -480,7 +481,10 @@ var iaCloudObject = {
 | objectDescription | string | データオブジェクトの説明・名称など。                                                       | 省略可                         |
 | timestamp         | string | このオブジェクトインスタンスのタイムスタンプ。<br>ISO8601 に規定される文字列。<br>　例： 2014-08-15T13:43:28.123456+09:00<br>　　　（ 秒以下については省略可 ）<br>省略された場合は、親オブジェクトの "timestamp" を<br>引き継ぐ。                                              | ルートオブジェクト以外は省略可 |
 | instanceKey       | string | このオブジェクトインスタンスのユニーク ID。<br>製造工番やシリアル番号などを想定している。<br>タイムスタンプとの併用も可。<br>（ objectKey + timestamp ）and/or instanceKey をもって、個々のインスタンスのユニークキーとなる。                                                   | 省略可                         |
+| quality      | string | 以下のobjectContentの品質を表す文字列。以下のいずれかの値を持つ。<br>"good": 正常な値、<br>"not good": 正常ではない、<br>"device error": センサ・計測器等でエラーが発生<br>"com. error": センサ・計測器等との通信でエラーが発生<br>"not updated": データが更新されていない。<br>"@xxxx": ユーザ定義の文字列を使用する場合@から始めることる。<br><br>なお、"good"以外の場合のobjectContentの内容は、実装依存である。                                                   | 省略可                         |
 | objectContent     | object | 任意の iaCloudObjectContent<br>**[ia-cloud データモデルの章](#データモデル)** を参照。  |                                |
+<br><br><br>
+
 
 ## オブジェクトアレイモデル
 
@@ -540,7 +544,8 @@ ia-cloud Web API 仕様で規定しているオブジェクトモデル構造や
 | 3  | objectDescription | 省略可             | もともと省略可                                                                     |
 | 4  | timestamp         | ts                 | timestamp の値の形式も、アプリケーション依存で決定してもよい                       |
 | 5  | instanceKey       | iKey               | 簡易表現が可能<br>もともと省略可のケースは省略可能                                 |
-| 6  | objectContent     | cont               | 簡易表現が可能                                                                     |
+| 6  | quality           | qlty               | 簡易表現が可能                                                                |
+| 7  | objectContent     | cont               | 簡易表現が可能                                                                |
 
 <div id="データモデル"></div>
 
@@ -564,6 +569,7 @@ var iaCloudObjectContent = {
             "commonName" : { string },
             "dataName" : { string },
             "unit" : { string },
+            "quality" : { string },
             "dataValue" : { primitivedata | nestedobject }
         },
 
@@ -590,7 +596,8 @@ ia-cloud で最も基本となるデータモデルである。他のモデル�
 | ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------- | ----------------- |
 | commonName | string                               | contentData の共通の名前<br>contentType 毎に定められている場合は、省略不可                | 省略可            |
 | dataName   | string                               | contentData の任意の名前（ 各 Locale に基づいた名前 ）<br>commmonName がある場合は省略可  | 省略可            |
-| Unit       | string                               | dataValue が表す数値の単位<br>ISO1000 、ISO/IEC80000 に準拠した MKS 単位系を使用することを原則とする。<br>dataValue が時刻を表す場合は "time" を、また、無単位の場合は Null 文字列 "" とすること。                                                                            | "" の場合は省略可 |
+| unit       | string                               | dataValue が表す数値の単位<br>ISO1000 、ISO/IEC80000 に準拠した MKS 単位系を使用することを原則とする。<br>dataValue が時刻を表す場合は "time" を、また、無単位の場合は Null 文字列 "" とすること。                                                                            | "" の場合は省略可 |
+| quality      | string | 以下のobjectContentの品質を表す文字列。以下のいずれかの値を持つ。<br>"good": 正常な値、<br>"not good": 正常ではない、<br>"device error": センサ・計測器等でエラーが発生<br>"com. error": センサ・計測器等との通信でエラーが発生<br>"not updated": データが更新されていない。<br>"@xxxx": ユーザ定義の文字列を使用する場合@から始めることる。<br><br>なお、"good"以外の場合のobjectContentの内容は、実装依存である。                                                   | 省略可                         |
 | dataValue  | JSON primitive or nested JSON object | contentData の値<br>Null 以外の任意の primitive データ、あるいは任意の object<br>時刻を表す場合は、ISO8601 に規定される文字列<br>　例：2014-08-15T13:43:28.123456+09:00                                                                                                      |                   |
 
 ## データモデルの簡易表現
@@ -608,8 +615,9 @@ ia-cloud Web API 仕様で規定しているデータモデル構造や各プロ
 | 2   | contentData | data     | 簡易表現が可能                                                                         |
 | 3   | commonName  | 省略可   | 異なるアプリケーション間でのデータの相互利用などが想定されない場合は<br>省略可         |
 | 4   | dataName    | name     | 簡易表現が可能                                                                         |
-| 5   | Unit        | 省略可   | データが無単位でない場合でも objectKey 等からデータの単位が決定できる<br>場合は省略可  |
-| 6   | dataValue   | value    | 簡易表現が可能                                                                         |
+| 5   | unit        | 省略可   | データが無単位でない場合でも objectKey 等からデータの単位が決定できる<br>場合は省略可  |
+| 6   | quality     | qlty     | 簡易表現が可能                                                                |
+| 7   | dataValue   | value    | 簡易表現が可能                                                                         |
 
 ## 生産実績データモデル
 
