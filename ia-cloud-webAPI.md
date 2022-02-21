@@ -1437,6 +1437,7 @@ var iaCloudORiNProviderObject = {
 | ----------- | ------ | ---------------- | ----- |
 | contentType | string | "ORiNProvider"   | 固定  |
 | contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列。（ すべてを含む必要はない ）<br>ORiN2 の仕様書に規定される、一つあるいは複数の CAO システム変数からなるもの。                                      |       |
+   
 
 #### contentData object
 
@@ -1517,8 +1518,12 @@ var iaCloudFiledata = {
             "dataValue" : { string }
         },
         {
+            "commonName" : "MIME Type",
+            "dataValue" : { string }
+        },
+        {
             "commonName" : "Encoding",
-            "dataValue" : { number }
+            "dataValue" : { string }
         },
         {
             "commonName" : "Size",
@@ -1545,6 +1550,8 @@ var iaCloudFiledata = {
 | ---------- | ------ | ------------------------------------------------------------------------------------------- | ----- |
 | commonName | string | "File Name"                                                                                 | 固定  |
 | dataValue  | string | URL encode された File 名。（ パスは任意 ）                                                 |       |
+| commonName | string | "MIME Type"                                                                                  | 固定  |
+| dataValue  | string | ファイルのコンテンツを表す。MIME type。<br>　"text/plain" 、"image/png" 、"video/quicktime" など |       |
 | commonName | string | "Encoding"                                                                                  | 固定  |
 | dataValue  | string | ファイルデータのエンコードを表す以下の文字列のいずれか。<br>　"ascii" 、"utf-8" 、"base64"  |       |
 | commonName | string | "Size"                                                                                      | 固定  |
