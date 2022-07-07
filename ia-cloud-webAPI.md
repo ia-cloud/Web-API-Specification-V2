@@ -209,6 +209,7 @@ Request json
 {
     // User 情報、FDS 情報
     "request" : "connect",
+    "userID" : { string },
     "Authorization" : { string },
     "FDSKey" : { string },
     "FDSType" : "iaCloudFDS",
@@ -218,9 +219,10 @@ Request json
 ```
 
 | Property      |値      | 説明                                                                                                                            | Notes              |
-| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| request       | string | "connect"                                                                                                                       | 固定               |
-| Authorization | string | サービスプロバイダーから支給された CCS へアクセスするための userID と Password を HTTP の Basic 認証に倣って設定する。<br>"Basic SUFfY2xvdWRVc2VySUQ6UGFzc2NvZGU="<br>（ userID = "ia-cloudUserID" , Password = "Passcode" , base64 encoding ）                                             | HTTPS の場合省略可 |
+| ------------- | ------ | ----------------------------------------------- | ------------------ |
+| request       | string | "connect"                                       | 固定               |
+| userID        | string | サービスプロバイダーから支給された CCS へアクセスするための userID  　　　　　| HTTPSの場合のみ必須  |
+| Authorization | string | サービスプロバイダーから支給された CCS へアクセスするための userID と Password を HTTP の Basic 認証に倣って設定する。<br>"Basic SUFfY2xvdWRVc2VySUQ6UGFzc2NvZGU="<br>（ userID = "ia-cloudUserID" , Password = "Passcode" , base64 encoding ）                                             | WSSの場合のみ必須 |
 | FDSKey        | string | この FDS のユニークな Key。                                                                                                     |                    |
 | FDSType       | string | "iaCloudFDS"                                                                                                                    | 固定               |
 | timestamp     | string | サービスへ接続する時点でのタイムスタンプ。<br>ISO8601 に規定される[拡張表記]文字列。<br>　例： 2014-08-15T13:43:28.123456+9:00  |                    |
@@ -238,8 +240,8 @@ Response json
 
 | Property  | 値     | 説明                                                                                                                               | Notes |
 | --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| userID    | string | サービスプロバイダーから支給されたサービスを受ける userID。<br>connect Request のコピー。                                          |       |
-| FDSKey    | string | この FDS のユニークな Key。 connect Request のコピー。                                                                             |       |
+| userID    | string | サービスプロバイダーから支給されたサービスを受ける userID。<br>Request userIDのコピーあるいは、AuthorizationをデコードしたuserID      |       |
+| FDSKey    | string | この FDS のユニークな Key。 connect Request のコピー。                  |       |
 | FDSType   | string | "iaCloudFDS"                                                                                                                       | 固定  |
 | serviceID | string | FDS が CCS にデータを格納するため等に使用する serviceID。<br>userID 、FDSKey 、timestamp などから生成された Hash 値等を使用する。  |       |
 
@@ -283,7 +285,7 @@ Response json
 | newServiceID    | string | 次回の store Request で使用されるべき serviceID。<br>変更の必要がなければ、同一の serviceID が返される。                  |        |
 | optionalMessage | object | FDS へ送付する任意の JSON オブジェクトメッセージ。<br>FDS は解釈できない optionnalMessage を読み飛ばさなければならない。  | 省略可 |
 
-       ## データオブジェクトインスタンスの取得
+## データオブジェクトインスタンスの取得
 
 FDS が CCS からデータを取得するサービスを利用する際のリクエスト。  
 CCS は、該当する objecyKey と timestamp をキーに DB を検索し、該当する iaCloudObject をレスポンスとして JSON で返す。
@@ -330,7 +332,7 @@ Response json
 | dataObject   | object | 取得された ia-cloud オブジェクト。                                                             |       |
 
 
-       ## データオブジェクトアレーの取得
+## データオブジェクトアレーの取得
 
 FDS が CCS から複数のデータオブジェクトをアレーとして取得するサービスを利用する際のリクエスト。  
 CCS は、該当する objecyKey と timestamp等 をキーに DB を検索し、該当する iaCloudObjectArray をレスポンスとして JSON で返す。
@@ -380,7 +382,7 @@ Response json
 | serviceID    | string | retrieve Request で使用された serviceID。 retrieve Requestのコピー。                                  |       |
 | status       | string | retrieve Request の実行結果 { "ok" / "ng" }                                                           |       |
 | newServiceID | string | 次回の格納 Request で使用されるべき serviceID<br>変更の必要がなければ、同一の serviceID が返される。  |       |
-| dataObject   | object | 取得された ia-cloud オブジェクト。                                                             |       |
+| dataObjectArray   | object | 取得された ia-cloud オブジェクトアレー。           |       |
 
 ## 状態の確認（ serviceID の更新 ）
 
