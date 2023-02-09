@@ -1625,6 +1625,80 @@ var iaCloudFiledata = {
 | commonName | string | "accessPath"                                                                              | 固定  |
 | dataValue  | string | 格納したファイルデータを取得するためのアクセスパス。例： https://file.store.com/objectKey/fileName.xxx  <br>このURLに対するAPI（http GETやPOST、）は各実装依存とする。（例はGETを想定したものであるが、これである必要はない。） |       |
 
+
+## ファイル情報モデル
+
+```
+// ******************************************************
+// ia-cloud/JSON File Info Model
+// ******************************************************
+
+以下のデータモデルを追加。
+
+var iaCloudFileinfo = {
+
+    "contentType" : "Fileinfo",
+    "contentData" : [
+        {
+            "commonName" : "File Name",
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "MIME Type",
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Encoding",
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Storage Service",
+            "dataValue" : { string }
+        }
+    ]
+}
+```
+
+### 各プロパティの意味と制限
+
+| Property    | 値     | 説明                                | Notes |
+| ----------- | ------ | ----------------------------------- | ----- |
+| contentType | string | "Filedata"                          | 固定  |
+| contentData | Array  | 以下に示す JSON オブジェクト配列。  |       |
+
+#### contentData object
+
+| Property   | 値     | 説明                                                                                        | Notes |
+| ---------- | ------ | ------------------------------------------------------------------------------------------- | ----- |
+| commonName | string | "File Name"                                                                                 | 固定  |
+| dataValue  | string | URL encode された File 名。（ パスは任意 ）                                                 |       |
+| commonName | string | "MIME Type"                                                                                  | 固定  |
+| dataValue  | string | ファイルのコンテンツを表す。MIME type。<br>　"text/plain" 、"image/png" 、"video/quicktime" など |       |
+| commonName | string | "Encoding"                                                                                  | 固定  |
+| dataValue  | string | ファイルデータのエンコードを表す以下の文字列のいずれか。<br>　"ascii" 、"utf-8" 、"base64"  |       |
+| commonName | string | "Size"                                                                                      | 固定  |
+| dataValue  | number | エンコードされたファイルの大きさ。（ バイト数 ）                                            |       |
+| commonName | string | "Encoded Data"                                                                              | 固定  |
+| dataValue  | string | エンコードされたファイルデータ。（ 最大 256 KB ）                                           |       |
+
+### このデータモデルを受け取った時のCCSの動作（実装例） 
+ 
+ 
+このファイルデータモデル以外のデータは、No-SQLタイプのデータベースにオブジェクトを格納することを想定しているが、ファイルデータモデルのデータは、ファイルデータそのものはファイルデータ格納サービスに格納し、ファイルデータに関する情報とその格納場所を含むオブジェクトをNo-SQLデータベースに格納することを想定している。 なお、base64エンコードされたバイナリーファイルはデコードし格納される。
+したがって、格納される contentData には以下のエントリーが追加される。
+
+| Property   | 値     | 説明                                                                                        | Notes |
+| ---------- | ------ | ------------------------------------------------------------------------------------------- | ----- |
+| commonName | string | "accessPath"                                                                              | 固定  |
+| dataValue  | string | 格納したファイルデータを取得するためのアクセスパス。例： https://file.store.com/objectKey/fileName.xxx  <br>このURLに対するAPI（http GETやPOST、）は各実装依存とする。（例はGETを想定したものであるが、これである必要はない。） |       |
+
+
+
+
+
+
+
+
 ## Blob データ
 
 データ構造を持たないデータモデル。
