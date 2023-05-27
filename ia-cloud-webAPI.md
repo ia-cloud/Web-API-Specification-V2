@@ -209,6 +209,7 @@ Request json
 {
     // User 情報、FDS 情報
     "request" : "connect",
+    "userID" : { string },
     "Authorization" : { string },
     "FDSKey" : { string },
     "FDSType" : "iaCloudFDS",
@@ -218,9 +219,10 @@ Request json
 ```
 
 | Property      |値      | 説明                                                                                                                            | Notes              |
-| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| request       | string | "connect"                                                                                                                       | 固定               |
-| Authorization | string | サービスプロバイダーから支給された CCS へアクセスするための userID と Password を HTTP の Basic 認証に倣って設定する。<br>"Basic SUFfY2xvdWRVc2VySUQ6UGFzc2NvZGU="<br>（ userID = "ia-cloudUserID" , Password = "Passcode" , base64 encoding ）                                             | HTTPS の場合省略可 |
+| ------------- | ------ | ----------------------------------------------- | ------------------ |
+| request       | string | "connect"                                       | 固定               |
+| userID        | string | サービスプロバイダーから支給された CCS へアクセスするための userID  　　　　　| HTTPSの場合のみ必須  |
+| Authorization | string | サービスプロバイダーから支給された CCS へアクセスするための userID と Password を HTTP の Basic 認証に倣って設定する。<br>"Basic SUFfY2xvdWRVc2VySUQ6UGFzc2NvZGU="<br>（ userID = "ia-cloudUserID" , Password = "Passcode" , base64 encoding ）                                             | WSSの場合のみ必須 |
 | FDSKey        | string | この FDS のユニークな Key。                                                                                                     |                    |
 | FDSType       | string | "iaCloudFDS"                                                                                                                    | 固定               |
 | timestamp     | string | サービスへ接続する時点でのタイムスタンプ。<br>ISO8601 に規定される[拡張表記]文字列。<br>　例： 2014-08-15T13:43:28.123456+9:00  |                    |
@@ -238,8 +240,8 @@ Response json
 
 | Property  | 値     | 説明                                                                                                                               | Notes |
 | --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| userID    | string | サービスプロバイダーから支給されたサービスを受ける userID。<br>connect Request のコピー。                                          |       |
-| FDSKey    | string | この FDS のユニークな Key。 connect Request のコピー。                                                                             |       |
+| userID    | string | サービスプロバイダーから支給されたサービスを受ける userID。<br>Request userIDのコピーあるいは、AuthorizationをデコードしたuserID      |       |
+| FDSKey    | string | この FDS のユニークな Key。 connect Request のコピー。                  |       |
 | FDSType   | string | "iaCloudFDS"                                                                                                                       | 固定  |
 | serviceID | string | FDS が CCS にデータを格納するため等に使用する serviceID。<br>userID 、FDSKey 、timestamp などから生成された Hash 値等を使用する。  |       |
 
@@ -327,7 +329,60 @@ Response json
 | serviceID    | string | retrieve Request で使用された serviceID。 retrieve Requestのコピー。                                  |       |
 | status       | string | retrieve Request の実行結果 { "ok" / "ng" }                                                           |       |
 | newServiceID | string | 次回の格納 Request で使用されるべき serviceID<br>変更の必要がなければ、同一の serviceID が返される。  |       |
-| dataObject   | object | 取得された ia-cloud オブジェクト。                                                                    |       |
+| dataObject   | object | 取得された ia-cloud オブジェクト。                                                             |       |
+
+
+## データオブジェクトアレーの取得
+
+FDS が CCS から複数のデータオブジェクトをアレーとして取得するサービスを利用する際のリクエスト。  
+CCS は、該当する objecyKey と timestamp等 をキーに DB を検索し、該当する iaCloudObjectArray をレスポンスとして JSON で返す。
+timestamp と instanceKey のいずれも "" の場合、CCS は保持する最新のインスタンスから指定の数のアレーを返す。  
+
+Request json
+```
+{
+    "request" : "retrieveArray",
+    "serviceID" : { string },
+    "retrieveObjects : {
+        "objectKey" : { string },
+        "query": {
+            "type": { string },     // "between" か　"beginWith"　どちらか
+            "from": { string },
+            "to": { string },
+            "begin": { string },    // typeが"beginWith"の時、検索するinstanceKeyの先頭文字列
+            "limit": { number },    // 取得するオブジェクトの最大数
+        }
+    }
+}
+
+```
+
+| Property    | 値     | 説明                                                                     | Notes |
+| ----------- | ------ | ------------------------------------------------------------------------ | ----- |
+| request     | string | "retrieveArray"                                                    | 固定  |
+| serviceID   | string | 接続時あるいは直前の Response Body で返された serviceID。                |       |
+| objectKey   | string | 取得する ia-cloud オブジェクトの Key。                                   |       |
+| type        | string | 検索の方法。timestampで検索する"between" か instanceKeyで検索する　"beginWith"     |       |
+| from, to    | string | 取得する ia-cloud オブジェクトインスタンスのタイムスタンプの範囲。<br>ISO8601 に規定される文字列。<br>　例：2014-08-15T13:43:28.123456+9:00<br>from と to のいずれかが省略されるか "" の場合、CCS は保持する存在する from か to から limit 数のオブジェクトのインスタンスを返す。 <br>from と to のいずれも省略された場合、最も新しいオブジェクトから limit 数のインスタンスを返す。     |        |
+| bigin       | string | instanceKeyに対する検索で、instanceKeyが bigin で始まるものを返す。                |       |
+| limit       | number | 検索結果の最大数。　最大1000。                |       |
+
+Response json
+```
+{
+    "serviceID" : { string },           // サービスID
+    "status" : { string },
+    "newServiceID" : { string },
+    "dataObjectArray" : { iaCloudObject }    //  ia-cloud オブジェクトアレーで詳細記述
+}
+```
+
+| Property     | 値     | 説明                                                                                                  | Notes |
+| ------------ | ------ | ----------------------------------------------------------------------------------------------------- | ----- |
+| serviceID    | string | retrieve Request で使用された serviceID。 retrieve Requestのコピー。                                  |       |
+| status       | string | retrieve Request の実行結果 { "ok" / "ng" }                                                           |       |
+| newServiceID | string | 次回の格納 Request で使用されるべき serviceID<br>変更の必要がなければ、同一の serviceID が返される。  |       |
+| dataObjectArray   | object | 取得された ia-cloud オブジェクトアレー。           |       |
 
 ## 状態の確認（ serviceID の更新 ）
 
@@ -1558,6 +1613,91 @@ var iaCloudFiledata = {
 | dataValue  | number | エンコードされたファイルの大きさ。（ バイト数 ）                                            |       |
 | commonName | string | "Encoded Data"                                                                              | 固定  |
 | dataValue  | string | エンコードされたファイルデータ。（ 最大 256 KB ）                                           |       |
+
+### このデータモデルを受け取った時のCCSの動作（実装例） 
+ 
+ 
+このファイルデータモデル以外のデータは、No-SQLタイプのデータベースにオブジェクトを格納することを想定しているが、ファイルデータモデルのデータは、ファイルデータそのものはファイルデータ格納サービスに格納し、ファイルデータに関する情報とその格納場所を含むオブジェクトをNo-SQLデータベースに格納することを想定している。 なお、base64エンコードされたバイナリーファイルはデコードし格納される。
+したがって、格納される contentData には以下のエントリーが追加される。
+
+| Property   | 値     | 説明                                                                                        | Notes |
+| ---------- | ------ | ------------------------------------------------------------------------------------------- | ----- |
+| commonName | string | "accessPath"                                                                              | 固定  |
+| dataValue  | string | 格納したファイルデータを取得するためのアクセスパス。例： https://file.store.com/objectKey/fileName.xxx  <br>このURLに対するAPI（http GETやPOST、）は各実装依存とする。（例はGETを想定したものであるが、これである必要はない。） |       |
+
+
+## ファイル情報モデル
+
+```
+// ******************************************************
+// ia-cloud/JSON File Info Model
+// ******************************************************
+
+以下のデータモデルを追加。
+
+var iaCloudFileinfo = {
+
+    "contentType" : "Fileinfo",
+    "contentData" : [
+        {
+            "commonName" : "File Name",
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "MIME Type",
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Encoding",
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "Storage Service",
+            "dataValue" : { string }
+        }
+    ]
+}
+```
+
+### 各プロパティの意味と制限
+
+| Property    | 値     | 説明                                | Notes |
+| ----------- | ------ | ----------------------------------- | ----- |
+| contentType | string | "Filedata"                          | 固定  |
+| contentData | Array  | 以下に示す JSON オブジェクト配列。  |       |
+
+#### contentData object
+
+| Property   | 値     | 説明                                                                                        | Notes |
+| ---------- | ------ | ------------------------------------------------------------------------------------------- | ----- |
+| commonName | string | "File Name"                                                                                 | 固定  |
+| dataValue  | string | URL encode された File 名。（ パスは任意 ）                                                 |       |
+| commonName | string | "MIME Type"                                                                                  | 固定  |
+| dataValue  | string | ファイルのコンテンツを表す。MIME type。<br>　"text/plain" 、"image/png" 、"video/quicktime" など |       |
+| commonName | string | "Encoding"                                                                                  | 固定  |
+| dataValue  | string | ファイルデータのエンコードを表す以下の文字列のいずれか。<br>　"ascii" 、"utf-8" 、"base64"  |       |
+| commonName | string | "Size"                                                                                      | 固定  |
+| dataValue  | number | エンコードされたファイルの大きさ。（ バイト数 ）                                            |       |
+| commonName | string | "Encoded Data"                                                                              | 固定  |
+| dataValue  | string | エンコードされたファイルデータ。（ 最大 256 KB ）                                           |       |
+
+### このデータモデルを受け取った時のCCSの動作（実装例） 
+ 
+ 
+このファイルデータモデル以外のデータは、No-SQLタイプのデータベースにオブジェクトを格納することを想定しているが、ファイルデータモデルのデータは、ファイルデータそのものはファイルデータ格納サービスに格納し、ファイルデータに関する情報とその格納場所を含むオブジェクトをNo-SQLデータベースに格納することを想定している。 なお、base64エンコードされたバイナリーファイルはデコードし格納される。
+したがって、格納される contentData には以下のエントリーが追加される。
+
+| Property   | 値     | 説明                                                                                        | Notes |
+| ---------- | ------ | ------------------------------------------------------------------------------------------- | ----- |
+| commonName | string | "accessPath"                                                                              | 固定  |
+| dataValue  | string | 格納したファイルデータを取得するためのアクセスパス。例： https://file.store.com/objectKey/fileName.xxx  <br>このURLに対するAPI（http GETやPOST、）は各実装依存とする。（例はGETを想定したものであるが、これである必要はない。） |       |
+
+
+
+
+
+
+
 
 ## Blob データ
 
