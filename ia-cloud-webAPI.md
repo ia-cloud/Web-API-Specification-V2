@@ -859,9 +859,8 @@ var iaCloudEquipmntStatus = {
 }
 ```
 
-監視対象の設備装置などの稼働状態を保持するオブジェクトモデルである。
-
-ISO22400 part2（ KPIs for manufacturing operations management ）5.2 Time model for work units で規定される Time elements の定義に準拠する。
+監視対象の設備装置などの稼働状態を保持するオブジェクトモデルである。  
+commonName "Status" を持つ dataValue は、ISO22400 part2（ KPIs for manufacturing operations management ）5.1 Time elements 及び 5.2-4 の各 Time model と Annex B で規定される Time elements の定義に準拠する。  
 
 ### 各プロパティの意味と制限
 
@@ -869,6 +868,7 @@ ISO22400 part2（ KPIs for manufacturing operations management ）5.2 Time model
 | ----------- | ------ | ----------------------------------------------------------------------------- | ----- |
 | contentType | string | "EquipmntStatus"                                                              | 固定  |
 | contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列。<br>（ すべてを含む必要はない ）  |       |
+<br>
 
 #### contentData object
 
@@ -876,13 +876,15 @@ ISO22400 part2（ KPIs for manufacturing operations management ）5.2 Time model
 | ---------- | ------ | ------------------------------------------- | ------ |
 | commonName | string | "Status"　装置状態を表す名称。              | 固定   |
 | dataName   | string | 任意の名前。（ 各 Locale に基づいた名前 ）  | 省略可 |
-| dataValue  | string | ISO22400-2 の 5.2 Time model for work unit の定義に準じる。<br><br>"Unit Busy"<br>"Unit Processing"<br>"Production"<br>"Unit Setup"<br>"Unit Delay"<br><br>のいずれかを標準とするが、拡張を許す。                                |        |
+| dataValue  | string | ユーザ定義の状態表現と、ISO22400-2 の 5.１ Time elements<br>の定義に準じる表現を使用できる。対象とするTime modelは<br>以下としそれぞれのdataValueを下表に示す<br>"Work units"<br>"Work units based on loss time”<br>"Production order"<br>"personnel"    |        |
+<br>
 
 | Property   | 値     | 説明                                        | Notes  |
 | ---------- | ------ | ------------------------------------------- | ------ |
 | commonName | string | "Production Order"　作業指示を表す名称。    | 固定   |
 | dataName   | string | 任意の名前。（ 各 Locale に基づいた名前 ）  | 省略可 |
 | dataValue  | string | 作業指示コード。                            |        |
+<br>
 
 | Property   | 値     | 説明                                        | Notes  |
 | ---------- | ------ | ------------------------------------------- | ------ |
@@ -890,15 +892,29 @@ ISO22400 part2（ KPIs for manufacturing operations management ）5.2 Time model
 | dataName   | string | 任意の名前。（ 各 Locale に基づいた名前 ）  | 省略可 |
 | unit       | string | "time"                                      | 固定   |
 | dataValue  | string | 作業開始時刻を示す文字列。                  |        |
+<br>
 
 | Property   | 値     | 説明                                        | Notes  |
 | ---------- | ------ | ------------------------------------------- | ------ |
 | commonName | string | "Power Consumption"　消費電力を表す名称。   | 固定   |
 | dataName   | string | 任意の名前。（ 各 Locale に基づいた名前 ）  | 省略可 |
 | unit       | string | "W", "KW"等、電力量の単位。                 |        |
-| dataValue  | number | 消費電力を示す数値。                        |        |
+| dataValue  | number | 消費電力を示す数値。                        |        |  
+<br>
 
+#### ISO22400-2 5.2time model　の定義に準じた dataValue
+<br>
+
+| ISO22400<br>Time model for  | 値(strings) |   Notes       |
+|:--------------:|:------------|:------------------------------------------------ |
+| Work units  | "AUBT"<br> "ADOT"<br> "AUPT"<br> "ADET"<br> "APT"<br> "AUST"<br>  | "Actual unit busy time"<br> "Actual unit down time"<br> "Actual unit processing time"<br> "Actual unit delay time"<br> "Actual production time"<br> "Actual unit setup time"<br> |
+| Work units<br>based on loss time | "OPT"<br> "AST"<br> "ADOT"<br> "NOT"<br> "MST"<br> "WT"<br> "VOT"<br> "DPT"<br>"RWT"  |  "Operating time"<br> "Actual setup time"<br> "Actual unit down time"<br> "Net operating time"<br> "Minor stop time"<br> "Waiting time"<br>"Valued operating time"<br>"Defect production time"<br>"Reworking time" |
+| Production order | "ATT"<br> "AQT"<br> "AUBT"<br> "AUPT"<br> "ADET"<br> "APT"<br>"AUST"<br> | "Actual transportation time"<br> "Actual queueing time"<br> "Actual unit busy time"<br> "Actual unit processing time"<br> "Actual Delay time"<br> "Actual production time"<br>"Actual unit setup time"|
+| personnel  | "APAT"<br> "APWT"<br> "NWT"| "Actual personnel attendance time"<br> "Actual personnel work time"<br> "Not working time, breaks"|
+<br><br>
+  
 ## エラーステイタスモデル（ エラー番号を格納 ）
+
 
 ```
 // ******************************************************
