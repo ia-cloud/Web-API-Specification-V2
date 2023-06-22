@@ -874,7 +874,7 @@ commonName "Status" を持つ dataValue は、ISO22400 part2（ KPIs for manufac
 
 | Property   | 値     | 説明                                        | Notes  |
 | ---------- | ------ | ------------------------------------------- | ------ |
-| commonName | string | "Status"　装置状態を表す名称。              | 固定   |
+| commonName | string | ユーザ定義の状態表現の場合は"Status"<br>ISO22400-2 の 5.１ Time elementsの定義に<br>準じる表現を使用する場合は、そのTime modelの略称名（下表参照）。| 固定   |
 | dataName   | string | 任意の名前。（ 各 Locale に基づいた名前 ）  | 省略可 |
 | dataValue  | string | ユーザ定義の状態表現と、ISO22400-2 の 5.１ Time elements<br>の定義に準じる表現を使用できる。対象とするTime modelは<br>以下としそれぞれのdataValueを下表に示す<br>"Work units"<br>"Work units based on loss time”<br>"Production order"<br>"personnel"    |        |
 <br>
@@ -902,15 +902,15 @@ commonName "Status" を持つ dataValue は、ISO22400 part2（ KPIs for manufac
 | dataValue  | number | 消費電力を示す数値。                        |        |  
 <br>
 
-#### ISO22400-2 5.2time model　の定義に準じた dataValue
+#### ISO22400-2 5.2time model　の定義に準じた dataValueとcommonName
 <br>
 
-| ISO22400<br>Time model for  | 値(strings) |   Notes       |
-|:--------------:|:------------|:------------------------------------------------ |
-| Work units  | "AUBT"<br> "ADOT"<br> "AUPT"<br> "ADET"<br> "APT"<br> "AUST"<br>  | "Actual unit busy time"<br> "Actual unit down time"<br> "Actual unit processing time"<br> "Actual unit delay time"<br> "Actual production time"<br> "Actual unit setup time"<br> |
-| Work units<br>based on loss time | "OPT"<br> "AST"<br> "ADOT"<br> "NOT"<br> "MST"<br> "WT"<br> "VOT"<br> "DPT"<br>"RWT"  |  "Operating time"<br> "Actual setup time"<br> "Actual unit down time"<br> "Net operating time"<br> "Minor stop time"<br> "Waiting time"<br>"Valued operating time"<br>"Defect production time"<br>"Reworking time" |
-| Production order | "ATT"<br> "AQT"<br> "AUBT"<br> "AUPT"<br> "ADET"<br> "APT"<br>"AUST"<br> | "Actual transportation time"<br> "Actual queueing time"<br> "Actual unit busy time"<br> "Actual unit processing time"<br> "Actual Delay time"<br> "Actual production time"<br>"Actual unit setup time"|
-| personnel  | "APAT"<br> "APWT"<br> "NWT"| "Actual personnel attendance time"<br> "Actual personnel work time"<br> "Not working time, breaks"|
+| ISO22400<br>Time model for  | commonName |値(strings) |   Notes       |
+|:--------------:|:------------|:------------|:-------------------------------------------- |
+| Work units  | KEI-WU  | "AUBT"<br> "ADOT"<br> "AUPT"<br> "ADET"<br> "APT"<br> "AUST"<br>  | "Actual unit busy time"<br> "Actual unit down time"<br> "Actual unit processing time"<br> "Actual unit delay time"<br> "Actual production time"<br> "Actual unit setup time"<br> |
+| Work units<br>based on loss time | KEI-WULT| "OPT"<br> "AST"<br> "ADOT"<br> "NOT"<br> "MST"<br> "WT"<br> "VOT"<br> "DPT"<br>"RWT"  |  "Operating time"<br> "Actual setup time"<br> "Actual unit down time"<br> "Net operating time"<br> "Minor stop time"<br> "Waiting time"<br>"Valued operating time"<br>"Defect production time"<br>"Reworking time" |
+| Production order | KEI-PO | "ATT"<br> "AQT"<br> "AUBT"<br> "AUPT"<br> "ADET"<br> "APT"<br>"AUST"<br> | "Actual transportation time"<br> "Actual queueing time"<br> "Actual unit busy time"<br> "Actual unit processing time"<br> "Actual Delay time"<br> "Actual production time"<br>"Actual unit setup time"|
+| personnel  | KEI-PSNL | "APAT"<br> "APWT"<br> "NWT"| "Actual personnel attendance time"<br> "Actual personnel work time"<br> "Not working time, breaks"|
 <br><br>
   
 ## エラーステイタスモデル（ エラー番号を格納 ）
