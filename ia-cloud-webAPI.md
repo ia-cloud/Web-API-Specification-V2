@@ -4,7 +4,7 @@
 
 # ia-cloud Specification
 
-# Web API Version 2.05β
+# Web API Version 2.07β
 
 ***
 
@@ -640,20 +640,20 @@ ia-cloud で最も基本となるデータモデルである。他のモデル�
 
 ### 各プロパティの意味と制限
 
-| Property    | 値           | 説明                                                                            | Notes |
-| ----------- | ------------ | ------------------------------------------------------------------------------- | ----- |
+| Property    | 値           | 説明    | Notes |
+| ----------- | ------------ | ------ | ----- |
 | contentType | string       | "iaCloudData"<br>"contentData" 配列に格納されるオブジェクトにより、<br>この "contentType" が異なる。<br>基本モデルは、"com.ia-cloud.contenttype.iaCloudData" を省略し、"iaCloudData" とする。<br>任意に独自拡張した "contentType" は、フルの uri 表記とする。  | 固定  |
-| contentData | object array | 以下に示す一つ以上の JSON オブジェクト配列                                      |       |
+| contentData | object array | 以下に示す一つ以上の JSON オブジェクト配列   |       |
 
 #### contentData object
 
-| Property   | 値                                   | 説明                                                                                      | Notes             |
-| ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------- | ----------------- |
-| commonName | string                               | contentData の共通の名前<br>contentType 毎に定められている場合は、省略不可                | 省略可            |
-| dataName   | string                               | contentData の任意の名前（ 各 Locale に基づいた名前 ）<br>commmonName がある場合は省略可  | 省略可            |
-| unit       | string                               | dataValue が表す数値の単位<br>ISO1000 、ISO/IEC80000 に準拠した MKS 単位系を使用することを原則とする。<br>dataValue が時刻を表す場合は "time" を、また、無単位の場合は Null 文字列 "" とすること。                                                                            | "" の場合は省略可 |
-| quality      | string | 以下のobjectContentの品質を表す文字列。以下のいずれかの値を持つ。<br>"good": 正常な値、<br>"not good": 正常ではない、<br>"device error": センサ・計測器等でエラーが発生<br>"com. error": センサ・計測器等との通信でエラーが発生<br>"not updated": データが更新されていない。<br>"@xxxx": ユーザ定義の文字列を使用する場合@から始めることる。<br><br>なお、"good"以外の場合のobjectContentの内容は、実装依存である。                                                   | 省略可                         |
-| dataValue  | JSON primitive or nested JSON object | contentData の値<br>Null 以外の任意の primitive データ、あるいは任意の object<br>時刻を表す場合は、ISO8601 に規定される文字列<br>　例：2014-08-15T13:43:28.123456+09:00                                                                                                      |                   |
+| Property   | 値           | 説明              | Notes             |
+| ---------- | ------------ | ---------------- | ----------------- |
+| commonName | string       | contentData の共通の名前<br>contentType 毎に定められている場合は、省略不可    | 省略可            |
+| dataName   | string       | contentData の任意の名前（ 各 Locale に基づいた名前 ）<br>commmonName がある場合は省略可  | 省略可            |
+| unit       | string  | dataValue が表す数値の単位<br>ISO1000 、ISO/IEC80000 に準拠した MKS 単位系を使用することを原則とする。<br>dataValue が時刻を表す場合は "time" を、また、無単位の場合は Null 文字列 "" とすること。    | "" の場合は省略可 |
+| quality      | string | 以下のobjectContentの品質を表す文字列。以下のいずれかの値を持つ。<br>"good": 正常な値、<br>"not good": 正常ではない、<br>"device error": センサ・計測器等でエラーが発生<br>"com. error": センサ・計測器等との通信でエラーが発生<br>"not updated": データが更新されていない。<br>"@xxxx": ユーザ定義の文字列を使用する場合@から始めることる。<br><br>なお、"good"以外の場合のobjectContentの内容は、実装依存である。   | 省略可                         |
+| dataValue  | JSON primitive or nested JSON object | contentData の値<br>Null 以外の任意の primitive データ、あるいは任意の object<br>時刻を表す場合は、ISO8601 に規定される文字列<br>　例：2014-08-15T13:43:28.123456+09:00      |
 
 ## データモデルの簡易表現
 
@@ -664,15 +664,99 @@ ia-cloud Web API 仕様で規定しているデータモデル構造や各プロ
 
 #### iaCloudObjectContent のプロパティ
 
-|     | プロパティ  | 簡易名称 | 説明                                                                                   |
-|:---:| ----------- | -------- | -------------------------------------------------------------------------------------- |
-| 1   | contentType | 省略可   | objectKey 等からデータの Type が決定できる場合は省略可                                 |
-| 2   | contentData | data     | 簡易表現が可能                                                                         |
+|     | プロパティ  | 簡易名称 | 説明              |
+|:---:| ----------- | -------- | -------------- |
+| 1   | contentType | 省略可   | objectKey 等からデータの Type が決定できる場合は省略可    |
+| 2   | contentData | data     | 簡易表現が可能        |
 | 3   | commonName  | 省略可   | 異なるアプリケーション間でのデータの相互利用などが想定されない場合は<br>省略可         |
-| 4   | dataName    | name     | 簡易表現が可能                                                                         |
+| 4   | dataName    | name     | 簡易表現が可能        |
 | 5   | unit        | 省略可   | データが無単位でない場合でも objectKey 等からデータの単位が決定できる<br>場合は省略可  |
-| 6   | quality     | qlty     | 簡易表現が可能                                                                |
-| 7   | dataValue   | value    | 簡易表現が可能                                                                         |
+| 6   | quality     | qlty     | 簡易表現が可能        |
+| 7   | dataValue   | value    | 簡易表現が可能        |
+
+## 生産指図(Production Order) Model
+
+```
+// ******************************************************
+// ia-cloud/JSON Production Order Model
+// ******************************************************
+
+var iaCloudProductionOrder = {
+
+    "contentType" : "ProductionOrder",
+        "contentData" : [
+          {
+            "commonName" : “orderID”,
+            "dataName" : “製造指図番号”,
+            "unit" : “” ,
+            "dataValue" : “PO12345678”
+        },
+ 	    {
+            "commonName" : “status”,
+            "dataName" : “進捗状況”,
+            "unit" : “” ,
+            "dataValue" : “issued”,
+        },
+	    {
+            "commonName" : “productID”,
+            "dataName" : “図番”,
+            "unit" : “” ,
+            "dataValue" : “262557843-001”,
+        },
+         {
+            "commonName" : "Produced Quantity",
+            "dataName" : “完成数”,
+            "unit" : “” ,
+            "dataValue" : “28”,
+        },
+
+        /*      .
+            one or more any contentData objects
+                .
+                .            */
+    ]
+}
+```
+
+製造ラインや製造ワークセル、製造設備などへの、生産指図とその状態を保持するオブジェクトモデルである。
+
+### 各プロパティの意味と制限
+
+| Property    | 値                | 説明   | Notes |
+| ----------- | ----------------- | ----- | ----- |
+| contentType | string            | "ProductionOrder"       | 固定  |
+| contentData | JSON object Array | 以下に示す一つ以上の JSON オブジェクト配列。<br>（ すべてを含む必要はない ）  |       |
+
+#### contentData object
+
+| Property   | 値     | 説明                                                                     | Notes |
+| ---------- | ------ | ------------------------------------------------------------------------ | ----- |
+| commonName | string | "ProductionOrder"　製造指図の状態を表すデータ名称。                                 | 固定  |
+| dataValue  | object | Production Order(P.O.)の実施状態を表すオブジェクト。<br>以下に示す要素を持つ、一つ以上の JSON オブジェクト配列。（ すべてを含む必要はない ）<br>次の dataValueObject を参照。  |     hoge  |
+|
+
+
+#### contentData object
+
+| Property   | 値     | 説明                                | Notes  |
+| ---------- | ------ | ---------------------------------- | ------ |
+| commonName | string | "Order ID"：製造指図のID             | 固定   |
+
+| Property   | 値     | 説明                                | Notes  |
+| ---------- | ------ | ---------------------------------- | ------ |
+| commonName | string | "Status"：製造指図進捗状況<br>値として、状態を表すを表す任意の文字列を使用できるが、<br>以下のいずれかを使用することを推奨する<br>"issed" : 発行済み<br>"ongoing" : 進行中<br>"completed" : 完了<br>"pending" : 保留中| 固定   |
+
+| Property   | 値     | 説明                                | Notes  |
+| ---------- | ------ | ---------------------------------- | ------ |
+| commonName | string | "Product ID"：製造される製品のID番号      | 固定   |
+
+| Property   | 値     | 説明                                | Notes  |
+| ---------- | ------ | ---------------------------------- | ------ |
+| commonName | string |及び、以下の ISO22400-2 の 5.3 Time model for productionorder および<br> 5.5 Logistical elements で規定される、以下の各 KEI-elements の定義に準じる。<br><br>"Planned Order Time"<br>"Planned Order Quantity"<br>"Scrap Quantity"<br>"Planned Scrap Quantity"<br>"Good Quantity"<br>"Rework Quantity"<br>"Produced Quantity"<br>"Raw Materials"<br>"Raw Materials Inventory"<br>"Finished  Goods Inventory"<br>"Consumable Inventory"<br>"Consumed Material"<br>"Integrated Good Quantity"<br>"Production Loss"<br>"Storage and Transportation Loss"<br>"Other Loss"<br>"Equipment Production Capacity"<br><br>のいずれか、一つ以上の組合せを標準とするが、拡張を許す。  |        |
+| dataName   | string | contentData の任意の名前。（ 各 Locale に基づいた名前 ）    | 省略可 |
+| unit       | string | "" か、dataValue の適切な単位。       | 省略可   |
+| dataValue  | string<br>or<br>number | 上記の各 contentData の値。        |        |
+
 
 ## 生産実績データモデル
 
@@ -705,19 +789,19 @@ ISO22400 part2（ KPIs for manufacturing operations management ）5.5 Logistical
 
 ### 各プロパティの意味と制限
 
-| Property    | 値     | 説明                                                                                      | Notes |
-| ----------- | ------ | ----------------------------------------------------------------------------------------- | ----- |
-| contentType | string | "ProductionResult"                                                                        | 固定  |
+| Property    | 値     | 説明                  | Notes |
+| ----------- | ------ | -------------------- | ----- |
+| contentType | string | "ProductionResult"   | 固定  |
 | contentData | Array  | 以下に示す要素を持つ、一つ以上の JSON オブジェクト配列。<br>（ すべてを含む必要はない ）  |       |
 
 #### contentData object
 
-| Property   | 値     | 説明                                                                                              | Notes  |
-| ---------- | ------ | ------------------------------------------------------------------------------------------------- | ------ |
-| commonName | string | contentData の名前<br><br>"OrderID"：製造指図の ID<br>及び、以下の ISO22400-2 の 5.5 Logistical elements で規定される<br>各 elements の定義に準じる。<br><br>"PlannedOrder Quantity"<br>"Scrap Quantity"<br>"Planned Scrap Quantity"<br>"Good Quantity"<br>"Rework Quantity"<br>"Produced Quantity"<br>"Raw Materials"<br>"Raw Materials Inventory"<br>"Finished  Goods Inventory"<br>"Consumable Inventory"<br>"Consumed Material"<br>"Integrated Good Quantity"<br>"Production Loss"<br>"Storage and Transportation Loss"<br>"Other Loss"<br>"Equipment Production Capacity"<br><br>のいずれか、一つ以上の組合せを標準とするが、拡張を許す。  |        |
-| dataName   | string | contentData の任意の名前。（ 各 Locale に基づいた名前 ）                                          | 省略可 |
-| unit       | string | "" か、dataValue の適切な単位。                                                                   | 固定   |
-| dataValue  | number | 上記の各 contentData の数量を表す数値。                                                           |        |
+| Property   | 値     | 説明                                | Notes  |
+| ---------- | ------ | ---------------------------------- | ------ |
+| commonName | string | contentData の名前<br><br>"OrderID"：製造指図の ID<br><br>及び、以下の ISO22400-2 の 5.5 Logistical elements で規定される<br>各 elements の定義に準じる。<br><br>"Planned Order Quantity"<br>"Scrap Quantity"<br>"Planned Scrap Quantity"<br>"Good Quantity"<br>"Rework Quantity"<br>"Produced Quantity"<br>"Raw Materials"<br>"Raw Materials Inventory"<br>"Finished  Goods Inventory"<br>"Consumable Inventory"<br>"Consumed Material"<br>"Integrated Good Quantity"<br>"Production Loss"<br>"Storage and Transportation Loss"<br>"Other Loss"<br>"Equipment Production Capacity"<br><br>のいずれか、一つ以上の組合せを標準とするが、拡張を許す。  |        |
+| dataName   | string | contentData の任意の名前。（ 各 Locale に基づいた名前 ）    | 省略可 |
+| unit       | string | "" か、dataValue の適切な単位。       | 固定   |
+| dataValue  | number | 上記の各 contentData の数量を表す数値。        |        |
 
 ## 在庫実績データモデル
 
@@ -756,15 +840,15 @@ var iaCloudInventoryData = {
 
 ### 各プロパティの意味と制限
 
-| Property    | 値     | 説明                                                                          | Notes |
-| ----------- | ------ | ----------------------------------------------------------------------------- | ----- |
-| contentType | string | "InventoryData"                                                               | 固定  |
+| Property    | 値     | 説明                           | Notes |
+| ----------- | ------ | ----------------------------- | ----- |
+| contentType | string | "InventoryData"               | 固定  |
 | contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列。<br>（ すべてを含む必要はない ）  |       |
 
 #### contentData object
 
-| Property   | 値     | 説明                                                     | Notes  |
-| ---------- | ------ | -------------------------------------------------------- | ------ |
+| Property   | 値     | 説明                                                 | Notes  |
+| ---------- | ------ | --------------------------------------------------- | ------ |
 | commonName | string | "Operation Type" 在庫への操作内容を表す名称。            |        |
 | dataName   | string | 任意の名前。（ 各 Locale に基づいた名前 ）               | 省略可 |
 | dataValue  | string | "Inbound" / "Outbound" / "Inventory" のいずれか。        |        |
@@ -808,9 +892,9 @@ ISO22400 part2（ KPIs for manufacturing operations management ）5.6 5.7 Qualit
 
 ### 各プロパティの意味と制限
 
-| Property    | 値     | 説明                                                                      | Notes |
-| ----------- | ------ | ------------------------------------------------------------------------- | ----- |
-| contentType | string | "QualityData"                                                             | 固定  |
+| Property    | 値     | 説明                            | Notes |
+| ----------- | ------ | ------------------------------ | ----- |
+| contentType | string | "QualityData"                  | 固定  |
 | contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列。（ すべてを含む必要はない ）  |       |
 
 #### contentData object
@@ -864,9 +948,9 @@ commonName "Status" を持つ dataValue は、ISO22400 part2（ KPIs for manufac
 
 ### 各プロパティの意味と制限
 
-| Property    | 値     | 説明                                                                          | Notes |
-| ----------- | ------ | ----------------------------------------------------------------------------- | ----- |
-| contentType | string | "EquipmntStatus"                                                              | 固定  |
+| Property    | 値     | 説明                    | Notes |
+| ----------- | ------ | --------------------------------- | ----- |
+| contentType | string | "EquipmntStatus"                  | 固定  |
 | contentData | Array  | 以下に示す一つ以上の JSON オブジェクト配列。<br>（ すべてを含む必要はない ）  |       |
 <br>
 
@@ -949,8 +1033,8 @@ var iaCloudErrorStatus = {
 ### 各プロパティの意味と制限
 
 | Property    | 値          | 説明                                                                          | Notes |
-| ----------- | ----------- | ----------------------------------------------------------------------------- | ----- |
-| contentType | string      | "ErrorStatus"                                                                 | 固定  |
+| ----------- | ----------- | ------------------------ | ----- |
+| contentType | string      | "ErrorStatus"            | 固定  |
 | contentData | JSON object | 以下に示す一つ以上の JSON オブジェクト配列。<br>（ すべてを含む必要はない ）  |       |
 
 #### contentData object
@@ -1005,25 +1089,25 @@ var iaCloudAlarm&Event = {
 
 ### 各プロパティの意味と制限
 
-| Property    | 値                | 説明                                                                          | Notes |
-| ----------- | ----------------- | ----------------------------------------------------------------------------- | ----- |
-| contentType | string            | "ErrorStatus"                                                                 | 固定  |
+| Property    | 値                | 説明          | Notes |
+| ----------- | ----------------- | ------------------------------------- | ----- |
+| contentType | string            | "ErrorStatus"              | 固定  |
 | contentData | JSON object Array | 以下に示す一つ以上の JSON オブジェクト配列。<br>（ すべてを含む必要はない ）  |       |
 
 #### contentData object
 
-| Property   | 値     | 説明                                                                     | Notes |
-| ---------- | ------ | ------------------------------------------------------------------------ | ----- |
+| Property   | 値     | 説明                  | Notes |
+| ---------- | ------ | ----------------------------------------- | ----- |
 | commonName | string | "A&EStatus"　エラー状態表すデータ名称。                                  | 固定  |
 | dataValue  | object | Alarm & Event 状態を表すオブジェクト。<br>次の dataValueObject を参照。  |       |
 
 * **dataValueObject**
 
 | Property       | 値     | 説明                                                                                                                                       | Notes  |
-| -------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| -------------- | ------ | -------------------------------------------------------- | ------ |
 | AnEStatus      | string | "set" : 当該 A&E が発生<br>"reset" : 当該 A&E が復帰<br>"on" : 当該 A&E が発生中<br>"off" : 当該 A&E は発生していない<br><br>のいずれか。  |        |
-| AnECode        | string | エラーコードを表す文字列。                                                                                                                 |        |
-| AnEDescription | string | エラーメッセージを表す文字列。                                                                                                             |        |
+| AnECode        | string | エラーコードを表す文字列。                            |        |
+| AnEDescription | string | エラーメッセージを表す文字列。                         |        |
 
 ## 設備運転状態モデル
 
@@ -1053,15 +1137,15 @@ var iaCloudMachineStatus = {
 
 ### 各プロパティの意味と制限
 
-| Property    | 値                | 説明                                                                          | Notes |
-| ----------- | ----------------- | ----------------------------------------------------------------------------- | ----- |
+| Property    | 値                | 説明        | Notes |
+| ----------- | ----------------- | ------------------------------ | ----- |
 | contentType | string            | "MachineStatus"                                                               | 固定  |
 | contentData | JSON object Array | 以下に示す一つ以上の JSON オブジェクト配列。<br>（ すべてを含む必要はない ）  |       |
 
 #### contentData object
 
-| Property  | 値     | 説明                                                                                                                                  | Notes |
-| --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| Property  | 値     | 説明                     | Notes |
+| --------- | ------ | ------------------------------ | ----- |
 | dataName  | string | 設備の任意の名前。（ 各 Locale に基づいた名前 ）                                                                                      |       |
 | dataValue | string | "start" : 設備が運転を開始した<br>"stop" : 設備が停止した<br>"on" : 設備は運転中<br>"off" : 設備は停止中<br><br>のいずれかの文字列。  |       |
 
