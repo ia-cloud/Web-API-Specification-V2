@@ -1,0 +1,5410 @@
+[
+    {
+        "id": "78f520a3.c368",
+        "type": "tab",
+        "label": "UMエンジニアリング",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f983ee76263ba375",
+        "type": "tab",
+        "label": "武州工業",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "35bc236344890f87",
+        "type": "tab",
+        "label": "イチカワ",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cbcc72c986ef718e",
+        "type": "tab",
+        "label": "泰興物産セル1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2b14838b1ba5bbef",
+        "type": "tab",
+        "label": "泰興物産セル2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8aa064e3236f6637",
+        "type": "ia-cloud-ccs-connection-config",
+        "url": "https://eleqdgczya.execute-api.us-east-1.amazonaws.com/ipf/iacloud/dynamoreq",
+        "name": ""
+    },
+    {
+        "id": "f6e337587ba12606",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED ダッシュボード",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "YYYY/MM/DD",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "81c65005acd6094d",
+        "type": "ui_tab",
+        "name": "UMエンジニアリング",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "94d49089d72eb1f6",
+        "type": "ui_group",
+        "name": "消費電力",
+        "tab": "81c65005acd6094d",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "d482da72c3aca406",
+        "type": "ui_tab",
+        "name": "武州工業",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "591dc24937fd3cf5",
+        "type": "ui_group",
+        "name": "消費電力モニタ",
+        "tab": "d482da72c3aca406",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "5847b204f550c61f",
+        "type": "ui_group",
+        "name": "毎時CO2排出量",
+        "tab": "d482da72c3aca406",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "93abc6e2276aca34",
+        "type": "ui_group",
+        "name": "日毎CO2排出量",
+        "tab": "d482da72c3aca406",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "9eb9bcce888e19be",
+        "type": "ui_group",
+        "name": "ワークセル",
+        "tab": "d482da72c3aca406",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "c97d5598e1d2ce32",
+        "type": "ui_tab",
+        "name": "イチカワ",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ffd954d0ab205aa3",
+        "type": "ui_group",
+        "name": "消費電力モニタ",
+        "tab": "c97d5598e1d2ce32",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "06264c5b5a8f6be2",
+        "type": "ui_group",
+        "name": "毎時CO2排出量",
+        "tab": "c97d5598e1d2ce32",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "f3f00d9796d64d69",
+        "type": "ui_group",
+        "name": "日毎CO2排出量",
+        "tab": "c97d5598e1d2ce32",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "952e15de5576ac75",
+        "type": "ui_group",
+        "name": "プロント基板組み付け工程",
+        "tab": "c97d5598e1d2ce32",
+        "order": 5,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "01fa62ae7d2d0041",
+        "type": "ui_group",
+        "name": "リフロー炉運転状況",
+        "tab": "c97d5598e1d2ce32",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "f71747e16129b88d",
+        "type": "ui_group",
+        "name": "デマンド電力",
+        "tab": "81c65005acd6094d",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "a5c195c921bb4a1c",
+        "type": "ui_group",
+        "name": "日毎積算電力量",
+        "tab": "81c65005acd6094d",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "2148c2c6a04a0c4a",
+        "type": "ui_group",
+        "name": "ストッカー状況",
+        "tab": "81c65005acd6094d",
+        "order": 5,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "3e9dc8ee07833ff4",
+        "type": "ui_group",
+        "name": "成形機状態",
+        "tab": "81c65005acd6094d",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "26ddb9c3a7438882",
+        "type": "ui_tab",
+        "name": "泰興物産セル(2号機)",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3995af1d2691b47a",
+        "type": "ui_group",
+        "name": "消費電力",
+        "tab": "26ddb9c3a7438882",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "2f8520fbdc67f892",
+        "type": "ui_group",
+        "name": "デマンド電力",
+        "tab": "26ddb9c3a7438882",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "d36451c1a678be95",
+        "type": "ui_group",
+        "name": "日毎積算電力量",
+        "tab": "26ddb9c3a7438882",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "5a7dc3656b3f9d40",
+        "type": "ui_group",
+        "name": "成形機運転状況",
+        "tab": "b647caeae90e03ff",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "b647caeae90e03ff",
+        "type": "ui_tab",
+        "name": "泰興物産セル(11号機)",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d3941d4c9ea4b538",
+        "type": "ui_group",
+        "name": "消費電力",
+        "tab": "b647caeae90e03ff",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "a77d2471d879027e",
+        "type": "ui_group",
+        "name": "デマンド電力",
+        "tab": "b647caeae90e03ff",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "cdd8da089b59295c",
+        "type": "ui_group",
+        "name": "日毎消費電力量",
+        "tab": "b647caeae90e03ff",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "4685de47a5140825",
+        "type": "ui_dateset",
+        "z": "78f520a3.c368",
+        "group": "94d49089d72eb1f6",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "1d445e5c7c0bb8de",
+                "ce5eccd98cab0bb1",
+                "b0f8c0b5412cb113"
+            ]
+        ]
+    },
+    {
+        "id": "1d445e5c7c0bb8de",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.tc.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 240,
+        "wires": [
+            [
+                "4b6253cf1b64fe9e"
+            ]
+        ]
+    },
+    {
+        "id": "4b6253cf1b64fe9e",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "温調機",
+        "group": "94d49089d72eb1f6",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce5eccd98cab0bb1",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.mm.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "52d6deec2538a8d5"
+            ]
+        ]
+    },
+    {
+        "id": "52d6deec2538a8d5",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "成形機",
+        "group": "94d49089d72eb1f6",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "0",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b0f8c0b5412cb113",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.dr.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "4ca40b30f6ec1ef7"
+            ]
+        ]
+    },
+    {
+        "id": "4ca40b30f6ec1ef7",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "乾燥機",
+        "group": "94d49089d72eb1f6",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fdc62b6e6a732dbf",
+        "type": "ui_dateset",
+        "z": "78f520a3.c368",
+        "group": "f71747e16129b88d",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "acac810c6447714a",
+                "5dac317297fd1073",
+                "1d8af5e4c9d61523",
+                "b7074b870faffcbe"
+            ]
+        ]
+    },
+    {
+        "id": "acac810c6447714a",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.tc.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 580,
+        "wires": [
+            [
+                "aee02f2c984b3806"
+            ]
+        ]
+    },
+    {
+        "id": "aee02f2c984b3806",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "温調機",
+        "group": "f71747e16129b88d",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5dac317297fd1073",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.mm.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 520,
+        "wires": [
+            [
+                "d7f5dfd34ebc4f91"
+            ]
+        ]
+    },
+    {
+        "id": "d7f5dfd34ebc4f91",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "成形機",
+        "group": "f71747e16129b88d",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d8af5e4c9d61523",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.dr.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 640,
+        "wires": [
+            [
+                "79be91118ba431b5"
+            ]
+        ]
+    },
+    {
+        "id": "79be91118ba431b5",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "乾燥機",
+        "group": "f71747e16129b88d",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b7074b870faffcbe",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.pl1.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 700,
+        "wires": [
+            [
+                "4d68585c28a2a003"
+            ]
+        ]
+    },
+    {
+        "id": "4d68585c28a2a003",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "工場電力",
+        "group": "f71747e16129b88d",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "工場共通電力",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f078e9e1be7c100a",
+        "type": "ui_dateset",
+        "z": "78f520a3.c368",
+        "group": "a5c195c921bb4a1c",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 780,
+        "wires": [
+            [
+                "9ae1edc41f46cce6",
+                "5cc5bd8f7c8d8cdf",
+                "ece921e697450d7d",
+                "9a35947f301d2394"
+            ]
+        ]
+    },
+    {
+        "id": "9ae1edc41f46cce6",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.tc.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 920,
+        "wires": [
+            [
+                "70dd2f5bbb9c4b96"
+            ]
+        ]
+    },
+    {
+        "id": "70dd2f5bbb9c4b96",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "温調機",
+        "group": "a5c195c921bb4a1c",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5cc5bd8f7c8d8cdf",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.mm.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 860,
+        "wires": [
+            [
+                "b4d6d3523f2976c8"
+            ]
+        ]
+    },
+    {
+        "id": "b4d6d3523f2976c8",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "成形機",
+        "group": "a5c195c921bb4a1c",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ece921e697450d7d",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.dr.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 980,
+        "wires": [
+            [
+                "e39e8ff251ef834a"
+            ]
+        ]
+    },
+    {
+        "id": "e39e8ff251ef834a",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "乾燥機",
+        "group": "a5c195c921bb4a1c",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9a35947f301d2394",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.pl1.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": true,
+        "aggregation": "average",
+        "aggreunit": "day",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "168",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 1040,
+        "wires": [
+            [
+                "d82fe2a724d1b9b5"
+            ]
+        ]
+    },
+    {
+        "id": "d82fe2a724d1b9b5",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "工場電力",
+        "group": "a5c195c921bb4a1c",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "工場共通電力",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dbea40bf6d9524b2",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.rt.towerL",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "432",
+        "params": [
+            {
+                "dataName": "CH1状態",
+                "displayName": "非常停止"
+            }
+        ],
+        "configReady": "ready",
+        "x": 860,
+        "y": 180,
+        "wires": [
+            [
+                "8eb407704f3af4c6"
+            ]
+        ]
+    },
+    {
+        "id": "6f518e16e0097278",
+        "type": "ui_dateset",
+        "z": "78f520a3.c368",
+        "group": "3e9dc8ee07833ff4",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 780,
+        "y": 120,
+        "wires": [
+            [
+                "dbea40bf6d9524b2",
+                "b1970bb40ea663fb",
+                "d2aff7c448240325",
+                "87bb6f302e33acda"
+            ]
+        ]
+    },
+    {
+        "id": "8eb407704f3af4c6",
+        "type": "ui_oprstatus",
+        "z": "78f520a3.c368",
+        "confsel": "inchartSet",
+        "group": "2148c2c6a04a0c4a",
+        "label": "パレット切れ",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "item": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "params": [
+            {
+                "statusColor": "#f00000",
+                "statusValue": "on",
+                "statusLabel": "非常停止"
+            },
+            {
+                "statusColor": "#ff0000",
+                "statusValue": "slowBlink",
+                "statusLabel": "非常停止"
+            },
+            {
+                "statusColor": "#000000",
+                "statusValue": "off",
+                "statusLabel": ""
+            }
+        ],
+        "configReady": "ready",
+        "sort": "false",
+        "guide": "hide",
+        "x": 1080,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b1970bb40ea663fb",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.rt.towerL",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "432",
+        "params": [
+            {
+                "dataName": "CH2状態",
+                "displayName": "準備中"
+            }
+        ],
+        "configReady": "ready",
+        "x": 860,
+        "y": 240,
+        "wires": [
+            [
+                "02336a0dbee71cfb"
+            ]
+        ]
+    },
+    {
+        "id": "02336a0dbee71cfb",
+        "type": "ui_oprstatus",
+        "z": "78f520a3.c368",
+        "confsel": "inchartSet",
+        "group": "2148c2c6a04a0c4a",
+        "label": "パレット少",
+        "name": "",
+        "order": 2,
+        "width": "12",
+        "height": "2",
+        "item": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "params": [
+            {
+                "statusColor": "#ffff00",
+                "statusValue": "on",
+                "statusLabel": "準備中"
+            },
+            {
+                "statusColor": "#ffff00",
+                "statusValue": "slowBlink",
+                "statusLabel": ""
+            },
+            {
+                "statusColor": "#000000",
+                "statusValue": "off",
+                "statusLabel": ""
+            }
+        ],
+        "configReady": "ready",
+        "sort": "false",
+        "guide": "hide",
+        "x": 1080,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d2aff7c448240325",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.rt.towerL",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "432",
+        "params": [
+            {
+                "dataName": "CH3状態",
+                "displayName": "運転中"
+            }
+        ],
+        "configReady": "ready",
+        "x": 860,
+        "y": 300,
+        "wires": [
+            [
+                "242282e860b633e5"
+            ]
+        ]
+    },
+    {
+        "id": "242282e860b633e5",
+        "type": "ui_oprstatus",
+        "z": "78f520a3.c368",
+        "confsel": "inchartSet",
+        "group": "2148c2c6a04a0c4a",
+        "label": "通常運転",
+        "name": "",
+        "order": 3,
+        "width": "12",
+        "height": "2",
+        "item": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "params": [
+            {
+                "statusColor": "#2bff00",
+                "statusValue": "on",
+                "statusLabel": "通常運転"
+            },
+            {
+                "statusColor": "#000000",
+                "statusValue": "off",
+                "statusLabel": "不使用"
+            },
+            {
+                "statusColor": "#00ff00",
+                "statusValue": "slowBlink",
+                "statusLabel": ""
+            }
+        ],
+        "configReady": "ready",
+        "sort": "false",
+        "guide": "hide",
+        "x": 1080,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b58d630ee7ab8e60",
+        "type": "inject",
+        "z": "78f520a3.c368",
+        "name": "起動時",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "ce5eccd98cab0bb1",
+                "1d445e5c7c0bb8de",
+                "b0f8c0b5412cb113",
+                "dbea40bf6d9524b2",
+                "b1970bb40ea663fb",
+                "d2aff7c448240325",
+                "5dac317297fd1073",
+                "acac810c6447714a",
+                "1d8af5e4c9d61523",
+                "b7074b870faffcbe",
+                "5cc5bd8f7c8d8cdf",
+                "9ae1edc41f46cce6",
+                "ece921e697450d7d",
+                "9a35947f301d2394",
+                "87bb6f302e33acda"
+            ]
+        ]
+    },
+    {
+        "id": "87bb6f302e33acda",
+        "type": "getchartdata",
+        "z": "78f520a3.c368",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.um.m001.mm.towerL",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "432",
+        "params": [
+            {
+                "dataName": "CH1状態",
+                "displayName": "非常停止"
+            }
+        ],
+        "configReady": "ready",
+        "x": 860,
+        "y": 380,
+        "wires": [
+            [
+                "2e845d6c34c2cc1d"
+            ]
+        ]
+    },
+    {
+        "id": "2e845d6c34c2cc1d",
+        "type": "ui_oprstatus",
+        "z": "78f520a3.c368",
+        "confsel": "inchartSet",
+        "group": "3e9dc8ee07833ff4",
+        "label": "成形機",
+        "name": "",
+        "order": 2,
+        "width": "12",
+        "height": "2",
+        "item": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "params": [
+            {
+                "statusColor": "#ff0000",
+                "statusValue": "fastBlink",
+                "statusLabel": "非常停止"
+            },
+            {
+                "statusColor": "#000000",
+                "statusValue": "off",
+                "statusLabel": ""
+            },
+            {
+                "statusColor": "#ff0000",
+                "statusValue": "slowBlink",
+                "statusLabel": "非常停止"
+            }
+        ],
+        "configReady": "ready",
+        "sort": "false",
+        "guide": "hide",
+        "x": 1080,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "731fd893101d7f88",
+        "type": "ui_chart",
+        "z": "78f520a3.c368",
+        "name": "Dummy",
+        "group": "94d49089d72eb1f6",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8dad2b1b8abfe9e4",
+        "type": "http request",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://node-red.ia-cloud.com/IPF-images/busyu/BMF395.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": true,
+        "headers": [],
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "b0679fe928f91b03"
+            ]
+        ]
+    },
+    {
+        "id": "a80ec76f4e2495fb",
+        "type": "inject",
+        "z": "f983ee76263ba375",
+        "name": "起動時",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "8dad2b1b8abfe9e4",
+                "9c183caf4e678d7f"
+            ]
+        ]
+    },
+    {
+        "id": "b0679fe928f91b03",
+        "type": "base64",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "66b4b1717792967d"
+            ]
+        ]
+    },
+    {
+        "id": "66b4b1717792967d",
+        "type": "ui_template",
+        "z": "f983ee76263ba375",
+        "group": "9eb9bcce888e19be",
+        "name": "",
+        "order": 1,
+        "width": 6,
+        "height": "8",
+        "format": "<div style=\"text-align: center\">\n    <img src=\"data:image/jpeg;base64,{{msg.payload}}\" width=\"80%\">\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 580,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f11ca0d7a377b661",
+        "type": "ui_dateset",
+        "z": "f983ee76263ba375",
+        "group": "591dc24937fd3cf5",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 140,
+        "y": 320,
+        "wires": [
+            [
+                "cab3799c782168d2",
+                "eb67aca201cae97e"
+            ]
+        ]
+    },
+    {
+        "id": "75575027fae54bba",
+        "type": "getchartdata",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.busyu.Washer3063.1h",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "120",
+        "params": [
+            {
+                "dataName": "CO2-kg/h",
+                "displayName": "毎時CO2排出量"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 560,
+        "wires": [
+            [
+                "50c59c8143d4a95b"
+            ]
+        ]
+    },
+    {
+        "id": "50c59c8143d4a95b",
+        "type": "ui_chart",
+        "z": "f983ee76263ba375",
+        "name": "洗浄機 Washer3063",
+        "group": "5847b204f550c61f",
+        "order": 2,
+        "width": "12",
+        "height": "3",
+        "label": "洗浄機 Washer3063 (CO2-kg/h)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cab3799c782168d2",
+        "type": "getchartdata",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.busyu.Washer3063.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 380,
+        "wires": [
+            [
+                "697b68440873413d"
+            ]
+        ]
+    },
+    {
+        "id": "697b68440873413d",
+        "type": "ui_chart",
+        "z": "f983ee76263ba375",
+        "name": "洗浄機 Washer3063",
+        "group": "591dc24937fd3cf5",
+        "order": 2,
+        "width": "12",
+        "height": "3",
+        "label": "洗浄機 Washer3063 (kW)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "0",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5654d30f78a2f043",
+        "type": "getchartdata",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.busyu.Washer3063.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "14",
+        "params": [
+            {
+                "dataName": "CO2-kg/day",
+                "displayName": "日毎CO2排出量"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 740,
+        "wires": [
+            [
+                "e14ac430a29b56a7"
+            ]
+        ]
+    },
+    {
+        "id": "e14ac430a29b56a7",
+        "type": "ui_chart",
+        "z": "f983ee76263ba375",
+        "name": "洗浄機 Washer3063",
+        "group": "93abc6e2276aca34",
+        "order": 2,
+        "width": "12",
+        "height": "3",
+        "label": "洗浄機 Washer3063 (CO2-kg/day)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "500",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d8853f6d40b33d9",
+        "type": "getchartdata",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.busyu.BFM395.1h",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "120",
+        "params": [
+            {
+                "dataName": "CO2-kg/h",
+                "displayName": "毎時CO2排出量"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 620,
+        "wires": [
+            [
+                "2738a405c7475ce0"
+            ]
+        ]
+    },
+    {
+        "id": "2738a405c7475ce0",
+        "type": "ui_chart",
+        "z": "f983ee76263ba375",
+        "name": "端末加工機 BFM395",
+        "group": "5847b204f550c61f",
+        "order": 3,
+        "width": "12",
+        "height": "3",
+        "label": "端末加工機 BFM395 (CO2-kg/h)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb67aca201cae97e",
+        "type": "getchartdata",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.busyu.BFM395.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 440,
+        "wires": [
+            [
+                "7cad99dd325245c8"
+            ]
+        ]
+    },
+    {
+        "id": "7cad99dd325245c8",
+        "type": "ui_chart",
+        "z": "f983ee76263ba375",
+        "name": "端末加工機 BFM395",
+        "group": "591dc24937fd3cf5",
+        "order": 3,
+        "width": "12",
+        "height": "3",
+        "label": "端末加工機 BFM395 (kW)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b2e445e45602df3",
+        "type": "getchartdata",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.busyu.BFM395.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "14",
+        "params": [
+            {
+                "dataName": "CO2-kg/day",
+                "displayName": "日毎CO2排出量"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 800,
+        "wires": [
+            [
+                "a61dba1cc49989b5"
+            ]
+        ]
+    },
+    {
+        "id": "a61dba1cc49989b5",
+        "type": "ui_chart",
+        "z": "f983ee76263ba375",
+        "name": "端末加工機 BFM395",
+        "group": "93abc6e2276aca34",
+        "order": 3,
+        "width": "12",
+        "height": "3",
+        "label": "端末加工機 BFM395 (CO2-kg/day)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "500",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64f9818a585bf20e",
+        "type": "ui_dateset",
+        "z": "f983ee76263ba375",
+        "group": "5847b204f550c61f",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 140,
+        "y": 500,
+        "wires": [
+            [
+                "75575027fae54bba",
+                "6d8853f6d40b33d9"
+            ]
+        ]
+    },
+    {
+        "id": "27e709238e65c042",
+        "type": "ui_dateset",
+        "z": "f983ee76263ba375",
+        "group": "93abc6e2276aca34",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 140,
+        "y": 680,
+        "wires": [
+            [
+                "5654d30f78a2f043",
+                "0b2e445e45602df3"
+            ]
+        ]
+    },
+    {
+        "id": "9c183caf4e678d7f",
+        "type": "http request",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://node-red.ia-cloud.com/IPF-images/busyu/sensor.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": true,
+        "headers": [],
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "73faedcea953069c"
+            ]
+        ]
+    },
+    {
+        "id": "73faedcea953069c",
+        "type": "base64",
+        "z": "f983ee76263ba375",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 400,
+        "y": 180,
+        "wires": [
+            [
+                "a6026908c69777bf"
+            ]
+        ]
+    },
+    {
+        "id": "a6026908c69777bf",
+        "type": "ui_template",
+        "z": "f983ee76263ba375",
+        "group": "9eb9bcce888e19be",
+        "name": "",
+        "order": 2,
+        "width": 6,
+        "height": "8",
+        "format": "<div style=\"text-align: center\">\n    <img src=\"data:image/jpeg;base64,{{msg.payload}}\" width=\"80%\">\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 580,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "285e9deaa6640f9a",
+        "type": "inject",
+        "z": "f983ee76263ba375",
+        "name": "起動時",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "cab3799c782168d2",
+                "eb67aca201cae97e",
+                "75575027fae54bba",
+                "6d8853f6d40b33d9",
+                "5654d30f78a2f043",
+                "0b2e445e45602df3"
+            ]
+        ]
+    },
+    {
+        "id": "8129b8938c49b1a9",
+        "type": "http request",
+        "z": "35bc236344890f87",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://node-red.ia-cloud.com/IPF-images/ichikawa/PWA.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": true,
+        "headers": [],
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "f44c83eb63f019fe"
+            ]
+        ]
+    },
+    {
+        "id": "631c04398b8b780a",
+        "type": "inject",
+        "z": "35bc236344890f87",
+        "name": "起動時",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "8129b8938c49b1a9",
+                "0670625d56b17d28"
+            ]
+        ]
+    },
+    {
+        "id": "f44c83eb63f019fe",
+        "type": "base64",
+        "z": "35bc236344890f87",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "2f690b58a5dc28de"
+            ]
+        ]
+    },
+    {
+        "id": "2f690b58a5dc28de",
+        "type": "ui_template",
+        "z": "35bc236344890f87",
+        "group": "952e15de5576ac75",
+        "name": "",
+        "order": 1,
+        "width": 6,
+        "height": "5",
+        "format": "<div style=\"text-align: center\">\n    <img src=\"data:image/jpeg;base64,{{msg.payload}}\" width=\"80%\">\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 580,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f70d436d34fef3ab",
+        "type": "ui_dateset",
+        "z": "35bc236344890f87",
+        "group": "ffd954d0ab205aa3",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 140,
+        "y": 340,
+        "wires": [
+            [
+                "46f9e4ccb5be0eda",
+                "db6960d0d3714e8a"
+            ]
+        ]
+    },
+    {
+        "id": "8fd2fb7683d0e2f2",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.RF-1.1h",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "120",
+        "params": [
+            {
+                "dataName": "CO2-kg/h",
+                "displayName": "毎時CO2排出量"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 580,
+        "wires": [
+            [
+                "70a70949680560e4"
+            ]
+        ]
+    },
+    {
+        "id": "70a70949680560e4",
+        "type": "ui_chart",
+        "z": "35bc236344890f87",
+        "name": "リフロー炉 (CO2-kg/h)",
+        "group": "06264c5b5a8f6be2",
+        "order": 2,
+        "width": "12",
+        "height": "3",
+        "label": "リフロー炉 (CO2-kg/h)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "46f9e4ccb5be0eda",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.RF-1.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 400,
+        "wires": [
+            [
+                "a5d951cf8165c5c5"
+            ]
+        ]
+    },
+    {
+        "id": "a5d951cf8165c5c5",
+        "type": "ui_chart",
+        "z": "35bc236344890f87",
+        "name": "リフロー炉 (kW)",
+        "group": "ffd954d0ab205aa3",
+        "order": 2,
+        "width": "12",
+        "height": "3",
+        "label": "リフロー炉 (kW)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "0",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 460,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "08dfc218faaaace5",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.RF-1.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "14",
+        "params": [
+            {
+                "dataName": "CO2-kg/day",
+                "displayName": "日毎CO2排出量"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 760,
+        "wires": [
+            [
+                "ca3a36a2a5a9fc2a"
+            ]
+        ]
+    },
+    {
+        "id": "ca3a36a2a5a9fc2a",
+        "type": "ui_chart",
+        "z": "35bc236344890f87",
+        "name": "リフロー炉 (CO2-kg/day)",
+        "group": "f3f00d9796d64d69",
+        "order": 2,
+        "width": "12",
+        "height": "3",
+        "label": "リフロー炉 (CO2-kg/day)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "500",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9cd1154a236abb45",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.N2-1.1h",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "120",
+        "params": [
+            {
+                "dataName": "CO2-kg/h",
+                "displayName": "毎時CO2排出量"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 640,
+        "wires": [
+            [
+                "cd16b0051193825b"
+            ]
+        ]
+    },
+    {
+        "id": "cd16b0051193825b",
+        "type": "ui_chart",
+        "z": "35bc236344890f87",
+        "name": "N2発生機 (CO2-kg/h)",
+        "group": "06264c5b5a8f6be2",
+        "order": 3,
+        "width": "12",
+        "height": "3",
+        "label": "N2発生機 (CO2-kg/h)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db6960d0d3714e8a",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.N2-1.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 460,
+        "wires": [
+            [
+                "a8c2410db0a641f6"
+            ]
+        ]
+    },
+    {
+        "id": "a8c2410db0a641f6",
+        "type": "ui_chart",
+        "z": "35bc236344890f87",
+        "name": "N2発生機 (kW)",
+        "group": "ffd954d0ab205aa3",
+        "order": 3,
+        "width": "12",
+        "height": "3",
+        "label": "N2発生機 (kW)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 460,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4a0824165dffc98",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.N2-1.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "14",
+        "params": [
+            {
+                "dataName": "CO2-kg/day",
+                "displayName": "日毎CO2排出量"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 820,
+        "wires": [
+            [
+                "b032c96bca08d9c6"
+            ]
+        ]
+    },
+    {
+        "id": "b032c96bca08d9c6",
+        "type": "ui_chart",
+        "z": "35bc236344890f87",
+        "name": "N2発生機 (CO2-kg/day)",
+        "group": "f3f00d9796d64d69",
+        "order": 3,
+        "width": "12",
+        "height": "3",
+        "label": "N2発生機 (CO2-kg/day)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "500",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31287d83c7e3a18f",
+        "type": "ui_dateset",
+        "z": "35bc236344890f87",
+        "group": "06264c5b5a8f6be2",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 140,
+        "y": 520,
+        "wires": [
+            [
+                "8fd2fb7683d0e2f2",
+                "9cd1154a236abb45"
+            ]
+        ]
+    },
+    {
+        "id": "62ab59f2be56c63a",
+        "type": "ui_dateset",
+        "z": "35bc236344890f87",
+        "group": "f3f00d9796d64d69",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 140,
+        "y": 700,
+        "wires": [
+            [
+                "08dfc218faaaace5",
+                "a4a0824165dffc98"
+            ]
+        ]
+    },
+    {
+        "id": "0670625d56b17d28",
+        "type": "http request",
+        "z": "35bc236344890f87",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://node-red.ia-cloud.com/IPF-images/ichikawa/reflow.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": true,
+        "headers": [],
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "784728b699ac6b7f"
+            ]
+        ]
+    },
+    {
+        "id": "784728b699ac6b7f",
+        "type": "base64",
+        "z": "35bc236344890f87",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 400,
+        "y": 180,
+        "wires": [
+            [
+                "b94b634aa34d362d"
+            ]
+        ]
+    },
+    {
+        "id": "b94b634aa34d362d",
+        "type": "ui_template",
+        "z": "35bc236344890f87",
+        "group": "952e15de5576ac75",
+        "name": "",
+        "order": 2,
+        "width": 6,
+        "height": "5",
+        "format": "<div style=\"text-align: center\">\n    <img src=\"data:image/jpeg;base64,{{msg.payload}}\" width=\"80%\">\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 580,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d574e9f34ecf60cd",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.RF-1.towerL",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "4320",
+        "params": [
+            {
+                "dataName": "CH1状態",
+                "displayName": "通常運転"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 960,
+        "wires": [
+            [
+                "683689d1aebf8ede"
+            ]
+        ]
+    },
+    {
+        "id": "6a9a0b7c0c276455",
+        "type": "ui_dateset",
+        "z": "35bc236344890f87",
+        "group": "01fa62ae7d2d0041",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 140,
+        "y": 900,
+        "wires": [
+            [
+                "d574e9f34ecf60cd",
+                "90d8de1a7ac84508",
+                "f1096a34ba4acd9a"
+            ]
+        ]
+    },
+    {
+        "id": "683689d1aebf8ede",
+        "type": "ui_oprstatus",
+        "z": "35bc236344890f87",
+        "confsel": "inchartSet",
+        "group": "01fa62ae7d2d0041",
+        "label": "通常運転",
+        "name": "",
+        "order": 2,
+        "width": "12",
+        "height": "2",
+        "item": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "params": [
+            {
+                "statusColor": "#02f200",
+                "statusValue": "on",
+                "statusLabel": "通常運転"
+            },
+            {
+                "statusColor": "#00ff00",
+                "statusValue": "slowBlink",
+                "statusLabel": ""
+            },
+            {
+                "statusColor": "#000000",
+                "statusValue": "off",
+                "statusLabel": ""
+            }
+        ],
+        "configReady": "ready",
+        "sort": "false",
+        "guide": "hide",
+        "x": 440,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "90d8de1a7ac84508",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.RF-1.towerL",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "4320",
+        "params": [
+            {
+                "dataName": "CH2状態",
+                "displayName": "準備中"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 1020,
+        "wires": [
+            [
+                "928938056f57006d"
+            ]
+        ]
+    },
+    {
+        "id": "928938056f57006d",
+        "type": "ui_oprstatus",
+        "z": "35bc236344890f87",
+        "confsel": "inchartSet",
+        "group": "01fa62ae7d2d0041",
+        "label": "準備中",
+        "name": "",
+        "order": 3,
+        "width": "12",
+        "height": "2",
+        "item": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "params": [
+            {
+                "statusColor": "#ffff00",
+                "statusValue": "on",
+                "statusLabel": "準備中"
+            },
+            {
+                "statusColor": "#ffff00",
+                "statusValue": "slowBlink",
+                "statusLabel": ""
+            },
+            {
+                "statusColor": "#000000",
+                "statusValue": "off",
+                "statusLabel": ""
+            }
+        ],
+        "configReady": "ready",
+        "sort": "false",
+        "guide": "hide",
+        "x": 440,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "f1096a34ba4acd9a",
+        "type": "getchartdata",
+        "z": "35bc236344890f87",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.ichikawa.RF-1.towerL",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "4320",
+        "params": [
+            {
+                "dataName": "CH3状態",
+                "displayName": "非常停止"
+            }
+        ],
+        "configReady": "ready",
+        "x": 220,
+        "y": 1080,
+        "wires": [
+            [
+                "f0553ff73cc6c56b"
+            ]
+        ]
+    },
+    {
+        "id": "f0553ff73cc6c56b",
+        "type": "ui_oprstatus",
+        "z": "35bc236344890f87",
+        "confsel": "inchartSet",
+        "group": "01fa62ae7d2d0041",
+        "label": "非常停止",
+        "name": "",
+        "order": 4,
+        "width": "12",
+        "height": "2",
+        "item": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "params": [
+            {
+                "statusColor": "#ff0000",
+                "statusValue": "on",
+                "statusLabel": "非常停止"
+            },
+            {
+                "statusColor": "#000000",
+                "statusValue": "off",
+                "statusLabel": ""
+            },
+            {
+                "statusColor": "#ff0000",
+                "statusValue": "slowBlink",
+                "statusLabel": "非常停止"
+            }
+        ],
+        "configReady": "ready",
+        "sort": "false",
+        "guide": "hide",
+        "x": 440,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "a62a260b6fafe4b0",
+        "type": "inject",
+        "z": "35bc236344890f87",
+        "name": "起動時",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 140,
+        "y": 260,
+        "wires": [
+            [
+                "46f9e4ccb5be0eda",
+                "db6960d0d3714e8a",
+                "8fd2fb7683d0e2f2",
+                "9cd1154a236abb45",
+                "08dfc218faaaace5",
+                "a4a0824165dffc98",
+                "d574e9f34ecf60cd",
+                "90d8de1a7ac84508",
+                "f1096a34ba4acd9a"
+            ]
+        ]
+    },
+    {
+        "id": "4295e0bd0a9134be",
+        "type": "ui_dateset",
+        "z": "cbcc72c986ef718e",
+        "group": "3995af1d2691b47a",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "b3fb6ba648c774fc",
+                "061ae7c26b005742",
+                "a181179f357e9c1e"
+            ]
+        ]
+    },
+    {
+        "id": "b3fb6ba648c774fc",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.tc.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 240,
+        "wires": [
+            [
+                "fc35874964ae0a24"
+            ]
+        ]
+    },
+    {
+        "id": "fc35874964ae0a24",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "温調機",
+        "group": "3995af1d2691b47a",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "061ae7c26b005742",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.mm.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "630a4af3ac97c179"
+            ]
+        ]
+    },
+    {
+        "id": "630a4af3ac97c179",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "成形機",
+        "group": "3995af1d2691b47a",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "0",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a181179f357e9c1e",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.dr.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "71aea689eb7e7300"
+            ]
+        ]
+    },
+    {
+        "id": "71aea689eb7e7300",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "乾燥機",
+        "group": "3995af1d2691b47a",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7a1e1ba188565bbd",
+        "type": "ui_dateset",
+        "z": "cbcc72c986ef718e",
+        "group": "2f8520fbdc67f892",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "fdccabd3257883a5",
+                "21079a83adc62b70",
+                "e9cf8e1b1b4e2018",
+                "db59e45627d227ab"
+            ]
+        ]
+    },
+    {
+        "id": "fdccabd3257883a5",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.tc.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 580,
+        "wires": [
+            [
+                "f0e2938ff536e535"
+            ]
+        ]
+    },
+    {
+        "id": "f0e2938ff536e535",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "温調機",
+        "group": "2f8520fbdc67f892",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "21079a83adc62b70",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.mm.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 520,
+        "wires": [
+            [
+                "795d042fd812859a"
+            ]
+        ]
+    },
+    {
+        "id": "795d042fd812859a",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "成形機",
+        "group": "2f8520fbdc67f892",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e9cf8e1b1b4e2018",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.dr.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 640,
+        "wires": [
+            [
+                "633a05e22c48d9b7"
+            ]
+        ]
+    },
+    {
+        "id": "633a05e22c48d9b7",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "乾燥機",
+        "group": "2f8520fbdc67f892",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db59e45627d227ab",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.pl1.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 700,
+        "wires": [
+            [
+                "6b96490aeaa121e2"
+            ]
+        ]
+    },
+    {
+        "id": "6b96490aeaa121e2",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "工場電力",
+        "group": "2f8520fbdc67f892",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "工場共通電力",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "69640095611f3c95",
+        "type": "ui_dateset",
+        "z": "cbcc72c986ef718e",
+        "group": "d36451c1a678be95",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 780,
+        "wires": [
+            [
+                "93ab11acc45ffd91",
+                "ff3be04a747fad6b",
+                "cd631578f72af3dd",
+                "b3e57bd026bff171"
+            ]
+        ]
+    },
+    {
+        "id": "93ab11acc45ffd91",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.tc.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 920,
+        "wires": [
+            [
+                "1fe7babc2dd17f8b"
+            ]
+        ]
+    },
+    {
+        "id": "1fe7babc2dd17f8b",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "温調機",
+        "group": "d36451c1a678be95",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ff3be04a747fad6b",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.mm.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 860,
+        "wires": [
+            [
+                "cf5050a3c5f13e49"
+            ]
+        ]
+    },
+    {
+        "id": "cf5050a3c5f13e49",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "成形機",
+        "group": "d36451c1a678be95",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cd631578f72af3dd",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m001.dr.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 980,
+        "wires": [
+            [
+                "c6edf244dedd5934"
+            ]
+        ]
+    },
+    {
+        "id": "c6edf244dedd5934",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "乾燥機",
+        "group": "d36451c1a678be95",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b3e57bd026bff171",
+        "type": "getchartdata",
+        "z": "cbcc72c986ef718e",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.pl1.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": true,
+        "aggregation": "average",
+        "aggreunit": "day",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "168",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 1040,
+        "wires": [
+            [
+                "d899959faa9f57bf"
+            ]
+        ]
+    },
+    {
+        "id": "d899959faa9f57bf",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "工場電力",
+        "group": "d36451c1a678be95",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "工場共通電力",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "66d5cdbd272e77d0",
+        "type": "inject",
+        "z": "cbcc72c986ef718e",
+        "name": "起動時",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "061ae7c26b005742",
+                "b3fb6ba648c774fc",
+                "a181179f357e9c1e",
+                "21079a83adc62b70",
+                "fdccabd3257883a5",
+                "e9cf8e1b1b4e2018",
+                "db59e45627d227ab",
+                "ff3be04a747fad6b",
+                "93ab11acc45ffd91",
+                "cd631578f72af3dd",
+                "b3e57bd026bff171"
+            ]
+        ]
+    },
+    {
+        "id": "df88c71e9699318d",
+        "type": "ui_chart",
+        "z": "cbcc72c986ef718e",
+        "name": "Dummy",
+        "group": "3995af1d2691b47a",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d2097c21ce39a90f",
+        "type": "ui_dateset",
+        "z": "2b14838b1ba5bbef",
+        "group": "d3941d4c9ea4b538",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "f9d581853933e1e9",
+                "59c191f8dd18d8fa",
+                "849ff5ae133f6e61"
+            ]
+        ]
+    },
+    {
+        "id": "f9d581853933e1e9",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.tc.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 240,
+        "wires": [
+            [
+                "4be823457c49b875"
+            ]
+        ]
+    },
+    {
+        "id": "4be823457c49b875",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "温調機",
+        "group": "d3941d4c9ea4b538",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59c191f8dd18d8fa",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.mm.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "1440",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "0469843bc80ae580"
+            ]
+        ]
+    },
+    {
+        "id": "0469843bc80ae580",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "成形機",
+        "group": "d3941d4c9ea4b538",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "0",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "849ff5ae133f6e61",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.dr.1m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "power",
+                "displayName": "消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "96c7d037f69e86f6"
+            ]
+        ]
+    },
+    {
+        "id": "96c7d037f69e86f6",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "乾燥機",
+        "group": "d3941d4c9ea4b538",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e5fe2e1bb5e4be51",
+        "type": "ui_dateset",
+        "z": "2b14838b1ba5bbef",
+        "group": "a77d2471d879027e",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "98973c7218fb27f3",
+                "d8079ca62846cd66",
+                "7378e7d789b45ef6",
+                "241688aed816160e"
+            ]
+        ]
+    },
+    {
+        "id": "98973c7218fb27f3",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.tc.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 580,
+        "wires": [
+            [
+                "145fd09fe4611556"
+            ]
+        ]
+    },
+    {
+        "id": "145fd09fe4611556",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "温調機",
+        "group": "a77d2471d879027e",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d8079ca62846cd66",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.mm.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 520,
+        "wires": [
+            [
+                "f64e3e6e95b67fed"
+            ]
+        ]
+    },
+    {
+        "id": "f64e3e6e95b67fed",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "成形機",
+        "group": "a77d2471d879027e",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7378e7d789b45ef6",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.dr.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 640,
+        "wires": [
+            [
+                "c1b641f7d1d99452"
+            ]
+        ]
+    },
+    {
+        "id": "c1b641f7d1d99452",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "乾燥機",
+        "group": "a77d2471d879027e",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "241688aed816160e",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.pl1.30m",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "240",
+        "params": [
+            {
+                "dataName": "demandPower",
+                "displayName": "デマンド電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 700,
+        "wires": [
+            [
+                "2dc8f9807a16a4c3"
+            ]
+        ]
+    },
+    {
+        "id": "2dc8f9807a16a4c3",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "工場電力",
+        "group": "a77d2471d879027e",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "工場共通電力",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0f2128f23b960184",
+        "type": "ui_dateset",
+        "z": "2b14838b1ba5bbef",
+        "group": "cdd8da089b59295c",
+        "name": "",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 280,
+        "y": 780,
+        "wires": [
+            [
+                "5b3968e7a14a0d6d",
+                "3eb743b71f8b0787",
+                "639625aba1a8a70c",
+                "2f66819993f7f130"
+            ]
+        ]
+    },
+    {
+        "id": "5b3968e7a14a0d6d",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.tc.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 920,
+        "wires": [
+            [
+                "0b160d2ce63ccf92"
+            ]
+        ]
+    },
+    {
+        "id": "0b160d2ce63ccf92",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "温調機",
+        "group": "cdd8da089b59295c",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "label": "温調機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3eb743b71f8b0787",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.mm.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 860,
+        "wires": [
+            [
+                "82f7330d4b8105c5"
+            ]
+        ]
+    },
+    {
+        "id": "82f7330d4b8105c5",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "成形機",
+        "group": "cdd8da089b59295c",
+        "order": 2,
+        "width": "8",
+        "height": "3",
+        "label": "成形機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "639625aba1a8a70c",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.dr.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "7",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 980,
+        "wires": [
+            [
+                "28c9ad7442340b33"
+            ]
+        ]
+    },
+    {
+        "id": "28c9ad7442340b33",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "乾燥機",
+        "group": "cdd8da089b59295c",
+        "order": 4,
+        "width": "8",
+        "height": "3",
+        "label": "乾燥機",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2f66819993f7f130",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.pl1.1d",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "average",
+        "aggreunit": "day",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "168",
+        "params": [
+            {
+                "dataName": "watt-hour",
+                "displayName": "日毎積算消費電力"
+            }
+        ],
+        "configReady": "ready",
+        "x": 340,
+        "y": 1040,
+        "wires": [
+            [
+                "bb774267a7e320cf"
+            ]
+        ]
+    },
+    {
+        "id": "bb774267a7e320cf",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "工場電力",
+        "group": "cdd8da089b59295c",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "工場共通電力",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8be0b5e9b788ebaa",
+        "type": "getchartdata",
+        "z": "2b14838b1ba5bbef",
+        "name": "",
+        "ccsConnectionConfig": "8aa064e3236f6637",
+        "tableName": "IPF_storeTable_iaCloudAPI_v2.0",
+        "objectKey": "co.jp.tycoh.m002.towerL.status",
+        "dateCheck": "inDateset",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "1",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "year",
+        "decimalPoint": "noexe",
+        "sort": "false",
+        "limit": "24",
+        "params": [
+            {
+                "dataName": "成形機運転状況",
+                "displayName": "成形機運転状況"
+            }
+        ],
+        "configReady": "ready",
+        "x": 860,
+        "y": 180,
+        "wires": [
+            [
+                "f7b7a5c67c8e26c6",
+                "b5167159884b6084"
+            ]
+        ]
+    },
+    {
+        "id": "c444314a4cba1cd7",
+        "type": "ui_dateset",
+        "z": "2b14838b1ba5bbef",
+        "group": "5a7dc3656b3f9d40",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "label": "dateset",
+        "direction": "Vertical",
+        "display_settings": "",
+        "x": 780,
+        "y": 120,
+        "wires": [
+            [
+                "8be0b5e9b788ebaa"
+            ]
+        ]
+    },
+    {
+        "id": "f7b7a5c67c8e26c6",
+        "type": "ui_oprstatus",
+        "z": "2b14838b1ba5bbef",
+        "confsel": "inchartSet",
+        "group": "5a7dc3656b3f9d40",
+        "label": "成形機運転状況",
+        "name": "",
+        "order": 2,
+        "width": "12",
+        "height": "2",
+        "item": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "params": [
+            {
+                "statusColor": "#04f000",
+                "statusValue": "異常停止",
+                "statusLabel": "非常停止"
+            },
+            {
+                "statusColor": "#ff0000",
+                "statusValue": "停止中",
+                "statusLabel": ""
+            }
+        ],
+        "configReady": "ready",
+        "sort": "false",
+        "guide": "hide",
+        "x": 1080,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c1ed1f0b010b96db",
+        "type": "inject",
+        "z": "2b14838b1ba5bbef",
+        "name": "起動時",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "59c191f8dd18d8fa",
+                "f9d581853933e1e9",
+                "849ff5ae133f6e61",
+                "8be0b5e9b788ebaa",
+                "d8079ca62846cd66",
+                "98973c7218fb27f3",
+                "7378e7d789b45ef6",
+                "241688aed816160e",
+                "3eb743b71f8b0787",
+                "5b3968e7a14a0d6d",
+                "639625aba1a8a70c",
+                "2f66819993f7f130"
+            ]
+        ]
+    },
+    {
+        "id": "6512bd798134149b",
+        "type": "ui_chart",
+        "z": "2b14838b1ba5bbef",
+        "name": "Dummy",
+        "group": "d3941d4c9ea4b538",
+        "order": 5,
+        "width": "8",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b5167159884b6084",
+        "type": "debug",
+        "z": "2b14838b1ba5bbef",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 300,
+        "wires": []
+    }
+]
