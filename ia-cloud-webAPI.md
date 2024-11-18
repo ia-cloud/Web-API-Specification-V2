@@ -4,7 +4,7 @@
 
 # ia-cloud Specification
 
-# Web API Version 2.07β
+# Web API Version 2.08β
 
 ***
 
@@ -271,8 +271,8 @@ Request json
 Response json
 ```
 {
-    "FDSKey" : { string },
     "serviceID" : { string },
+    "status" : { string },
     "newServiceID" : { string },
     "optionalMessage" : { object }
 }
