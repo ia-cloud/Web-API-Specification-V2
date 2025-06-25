@@ -1657,6 +1657,56 @@ var iaCloudPLCRegister = {
 | commonName | string        | "RegisterData"                                                                                                | 固定  |
 | dataValue  | string の配列 | レジスターデータ文字列の lengh 長の配列。<br>C 言語の 16 進表記。<br>　例 : [ "0x4a6f" , "0xd5c2" , ・・・ ]  |       |
 
+# KPack-Fmt モデル
+
+```
+// ******************************************************
+// ia-cloud/JSON JPack-Fmt data Model
+// ******************************************************
+
+var iaCloudJPack-Fmt = {
+
+    "contentType" : "JPack-Fmt",
+    "contentData" : [
+        {
+            "commonName" : "システム時間",
+            "dataName" : "ユーザ独自のデータ名称"
+            "dataValue" : { string }
+        },
+        {
+            "commonName" : "設定品番データ",
+            "dataName" : "ユーザ独自のデータ名称"
+            "dataValue" : { string }
+        },
+        {
+        /*      .
+            one or more any contentData objects
+                .
+                .            */
+        }
+    ]
+}
+```
+日本包装機械工業会の包装システムにおけるIoT標準化指針、JPack-Fmtに準拠したデータを格納するデータモデル（検討・作成中）
+https://www.jpmma.or.jp/news/seminar/page9027.html
+
+### 各プロパティの意味と制限
+
+| Property    | 値     | 説明                                | Notes |
+| ----------- | ------ | ----------------------------------- | ----- |
+| contentType | string | "JPack-Fmt"                       | 固定  |
+| contentData | Array  | 以下に示す JSON オブジェクト配列。  |       |
+
+#### contentData objec
+
+| Property   | 値            | 説明                                                                                               | Notes |
+| ---------- | ------------- | ------------------------------------------------------------------------------------------------- | ----- |
+| commonName | string        | JPack-Fmtで規定されるデータ名                                                                        | 固定  |
+| dataName   | string        | ユーザ独自で、JPack-Fmtデータに付与する名                                                             | 省略可  |
+| unit       | string        | dataValueの単位                                                                                   | 省略可  |
+| dataValue  | string/number | JPack-Fmtで規定されるデータの値                                                                      |  必須   |
+| quality    | string | 以下のobjectContentの品質を表す文字列。以下のいずれかの値を持つ。<br>"good": 正常な値、<br>"not good": 正常ではない、<br>"device error": センサ・計測器等でエラーが発生<br>"com. error": センサ・計測器等との通信でエラーが発生<br>"not updated": データが更新されていない。<br>"@xxxx": ユーザ定義の文字列を使用する場合@から始めることる。<br><br>なお、"good"以外の場合のobjectContentの内容は、実装依存である。        | 省略可 |
+
 ## ファイルデータモデル
 
 ```
