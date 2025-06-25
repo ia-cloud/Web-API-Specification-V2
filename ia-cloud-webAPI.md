@@ -1657,7 +1657,7 @@ var iaCloudPLCRegister = {
 | commonName | string        | "RegisterData"                                                                                                | 固定  |
 | dataValue  | string の配列 | レジスターデータ文字列の lengh 長の配列。<br>C 言語の 16 進表記。<br>　例 : [ "0x4a6f" , "0xd5c2" , ・・・ ]  |       |
 
-# KPack-Fmt モデル
+# JPack-Fmt モデル
 
 ```
 // ******************************************************
